@@ -61,7 +61,7 @@ NUMBER1 {DIGIT}+\.?
 
 NUMBER2 {DIGIT}*\.{DIGIT}+
 
-IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
+IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
 
 /* NEW in example 3 */
 /* STATE  */
@@ -102,6 +102,12 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
 
 
 {IDENTIFIER}   		 {
+
+						for (int i = 0; yytext[i] != '\0'; i++)
+						{
+							yytext[i] = tolower(yytext[i]);
+						}
+	
 						 /* NEW in example 7 */
 						 std::string identifier(yytext);
 

@@ -164,6 +164,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /* Minimum precedence */
 
+/*Se generan los tokens que apareceran al compilar en*/
 /*******************************************/
 /* NEW in example 5 */
 %token SEMICOLON
