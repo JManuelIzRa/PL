@@ -102,7 +102,7 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
 
 
 {IDENTIFIER}   		 {
-
+						/* Convertir la entrada a minúscula */
 						for (int i = 0; yytext[i] != '\0'; i++)
 						{
 							yytext[i] = tolower(yytext[i]);

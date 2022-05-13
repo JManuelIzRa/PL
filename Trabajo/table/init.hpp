@@ -72,6 +72,7 @@ static struct {
 	      } keyword[] = { 
 	                    {"imprimir", PRINT},
 	                    {"leer",  READ},
+						{"leer_cadena", READ_STRING},	// leer_cadena
 						{"si",	  IF},   	// NEW in example 17
 						{"sino",  ELSE}, 	// NEW in example 17
 						{"mientras", WHILE},	// NEW in example 17

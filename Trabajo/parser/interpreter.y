@@ -171,7 +171,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT READ IF ELSE WHILE 
+%token PRINT READ READ_STRING IF ELSE WHILE 
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -408,7 +408,7 @@ print:  PRINT exp
 		}
 ;	
 
-read:  READ LPAREN VARIABLE RPAREN  
+read:  READ LPAREN VARIABLE RPAREN
 		{
 			// Create a new read node
 			 $$ = new lp::ReadStmt($3);
@@ -418,6 +418,11 @@ read:  READ LPAREN VARIABLE RPAREN
 	| READ LPAREN CONSTANT RPAREN  
 		{   
  			execerror("Semantic error in \"read statement\": it is not allowed to modify a constant ",$3);
+		}
+
+	| READ_STRING LPAREN VARIABLE RPAREN
+		{
+			$$ = new lp::ReadStmt($3);
 		}
 ;
 

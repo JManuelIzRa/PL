@@ -52,37 +52,38 @@ extern int yydebug;
     SEMICOLON = 258,
     PRINT = 259,
     READ = 260,
-    IF = 261,
-    ELSE = 262,
-    WHILE = 263,
-    LETFCURLYBRACKET = 264,
-    RIGHTCURLYBRACKET = 265,
-    ASSIGNMENT = 266,
-    COMMA = 267,
-    NUMBER = 268,
-    BOOL = 269,
-    VARIABLE = 270,
-    UNDEFINED = 271,
-    CONSTANT = 272,
-    BUILTIN = 273,
-    OR = 274,
-    AND = 275,
-    GREATER_OR_EQUAL = 276,
-    LESS_OR_EQUAL = 277,
-    GREATER_THAN = 278,
-    LESS_THAN = 279,
-    EQUAL = 280,
-    NOT_EQUAL = 281,
-    NOT = 282,
-    PLUS = 283,
-    MINUS = 284,
-    MULTIPLICATION = 285,
-    DIVISION = 286,
-    MODULO = 287,
-    LPAREN = 288,
-    RPAREN = 289,
-    UNARY = 290,
-    POWER = 291
+    READ_STRING = 261,
+    IF = 262,
+    ELSE = 263,
+    WHILE = 264,
+    LETFCURLYBRACKET = 265,
+    RIGHTCURLYBRACKET = 266,
+    ASSIGNMENT = 267,
+    COMMA = 268,
+    NUMBER = 269,
+    BOOL = 270,
+    VARIABLE = 271,
+    UNDEFINED = 272,
+    CONSTANT = 273,
+    BUILTIN = 274,
+    OR = 275,
+    AND = 276,
+    GREATER_OR_EQUAL = 277,
+    LESS_OR_EQUAL = 278,
+    GREATER_THAN = 279,
+    LESS_THAN = 280,
+    EQUAL = 281,
+    NOT_EQUAL = 282,
+    NOT = 283,
+    PLUS = 284,
+    MINUS = 285,
+    MULTIPLICATION = 286,
+    DIVISION = 287,
+    MODULO = 288,
+    LPAREN = 289,
+    RPAREN = 290,
+    UNARY = 291,
+    POWER = 292
   };
 #endif
 
@@ -101,7 +102,7 @@ union YYSTYPE
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 105 "interpreter.tab.h"
+#line 106 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
