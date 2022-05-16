@@ -1,4 +1,4 @@
-if (-PI> 0) print true;
+si (-pi> 0) imprimir true;
 
 dato = 2;
 print dato;

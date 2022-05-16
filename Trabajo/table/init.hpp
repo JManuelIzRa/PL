@@ -56,8 +56,8 @@ static struct {
           std::string name ;
 	      bool value;
 	      } logicalConstant[] = { 
-	                    {"true", true},
-	                    {"false", false},
+	                    {"verdadero", true},
+	                    {"falso", false},
 	                    {"",      0}
 	                   };
 
@@ -74,9 +74,13 @@ static struct {
 	                    {"leer",  READ},
 						{"leer_cadena", READ_STRING},	// leer_cadena
 						{"si",	  IF},   	// NEW in example 17
-						{"sino",  ELSE}, 	// NEW in example 17
+						{"si_no",  ELSE}, 	// NEW in example 17
 						{"mientras", WHILE},	// NEW in example 17
-	                    {"",      0}
+						//Nuevas palabras reservadas
+						{"o",OR},
+						{"y",AND},
+						{"no",NOT},
+						{"",      0}
 	                   };
 
 
