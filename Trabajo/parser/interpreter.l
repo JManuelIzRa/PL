@@ -63,6 +63,8 @@ NUMBER2 {DIGIT}*\.{DIGIT}+
 
 IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
 
+CADENA	 "'"([^']|"\\\'")*"'"
+
 /* NEW in example 3 */
 /* STATE  */
 %x ERROR
@@ -151,6 +153,14 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
 								return s->getToken();
 							}
                      }
+
+{CADENA}			{
+            			std::string aux= strdup(yytext);
+            			aux=aux.substr ( 1, aux.size()-2 );
+            			char* aux2 = strcpy(new char[aux.length() + 1], aux.c_str());          //  yylval.cadena =  aux;
+            			yylval.cadena = aux2;
+						return CADENA;
+					}
 
 "-"		{ return MINUS;  } 			/* NEW in example 3 */
 "+"		{ return PLUS;   } 			/* NEW in example 3 */

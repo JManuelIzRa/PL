@@ -137,6 +137,51 @@ class VariableNode : public ExpNode
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+class StringNode : public ExpNode 
+{
+	private:
+	  std::string _id; //!< Name of the StringNode
+
+	public:
+
+	/*!		
+		\brief Constructor of VariableNode
+		\param value: double
+		\post  A new NumericVariableNode is created with the name of the parameter
+		\note  Inline function
+	*/
+	  StringNode(std::string const & value)
+		{
+			this->_id = value; 
+		}
+
+	/*!	
+		\brief   Type of the Variable
+		\return  int
+		\sa		 print
+	*/
+	 int getType();
+
+	/*!
+		\brief   Print the Variable
+		\return  void
+		\sa		 evaluate()
+	*/
+	  void print();
+
+	/*!
+		\brief   Evaluate the Variable as NUMBER
+		\return  string
+		\sa		 print
+	*/
+	  std::string evaluateCad();
+
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 /*!	
   \class ConstantNode
   \brief Definition of atributes and methods of ConstantNode class
@@ -1522,6 +1567,47 @@ class ReadStmt : public Statement
 
 /*!	
 	\brief   Evaluate the ReadStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+/*!	
+  \class   ReadStringStmt
+  \brief   Definition of atributes and methods of ReadStringStmt class
+  \note    ReadStringStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+class ReadStringStmt : public Statement
+{
+  private:
+	std::string _id; //!< Name of the ReadStringStmt
+
+
+  public:
+/*!
+	\brief Constructor of ReadStringStmt
+	\param id: string, name of the variable of the ReadStringStmt
+	\post  A new ReadStringStmt is created with the parameter
+*/
+  ReadStringStmt(std::string id)
+	{
+		this->_id = id;
+	}
+
+/*!
+	\brief   Print the ReadStringStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the ReadStringStmt
 	\return  void
 	\sa		 print
 */

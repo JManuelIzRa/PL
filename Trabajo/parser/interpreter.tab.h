@@ -62,28 +62,29 @@ extern int yydebug;
     COMMA = 268,
     NUMBER = 269,
     BOOL = 270,
-    VARIABLE = 271,
-    UNDEFINED = 272,
-    CONSTANT = 273,
-    BUILTIN = 274,
-    OR = 275,
-    AND = 276,
-    GREATER_OR_EQUAL = 277,
-    LESS_OR_EQUAL = 278,
-    GREATER_THAN = 279,
-    LESS_THAN = 280,
-    EQUAL = 281,
-    NOT_EQUAL = 282,
-    NOT = 283,
-    PLUS = 284,
-    MINUS = 285,
-    MULTIPLICATION = 286,
-    DIVISION = 287,
-    MODULO = 288,
-    LPAREN = 289,
-    RPAREN = 290,
-    UNARY = 291,
-    POWER = 292
+    CADENA = 271,
+    VARIABLE = 272,
+    UNDEFINED = 273,
+    CONSTANT = 274,
+    BUILTIN = 275,
+    OR = 276,
+    AND = 277,
+    GREATER_OR_EQUAL = 278,
+    LESS_OR_EQUAL = 279,
+    GREATER_THAN = 280,
+    LESS_THAN = 281,
+    EQUAL = 282,
+    NOT_EQUAL = 283,
+    NOT = 284,
+    PLUS = 285,
+    MINUS = 286,
+    MULTIPLICATION = 287,
+    DIVISION = 288,
+    MODULO = 289,
+    LPAREN = 290,
+    RPAREN = 291,
+    UNARY = 292,
+    POWER = 293
   };
 #endif
 
@@ -91,18 +92,19 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 138 "interpreter.y"
+#line 142 "interpreter.y"
 
   char * identifier; 				 /* NEW in example 7 */
   double number;  
   bool logic;						 /* NEW in example 15 */
+  char * cadena;
   lp::ExpNode *expNode;  			 /* NEW in example 16 */
   std::list<lp::ExpNode *>  *parameters;    // New in example 16; NOTE: #include<list> must be in interpreter.l, init.cpp, interpreter.cpp
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 106 "interpreter.tab.h"
+#line 108 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

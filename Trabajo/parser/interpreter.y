@@ -77,6 +77,10 @@
 #include "../table/init.hpp"
 /*******************************************/
 
+/*******************************************/
+#include "../table/stringVariable.hpp"
+/*******************************************/
+
 /*! 
 	\brief  Lexical or scanner function
 	\return int
@@ -139,6 +143,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
   char * identifier; 				 /* NEW in example 7 */
   double number;  
   bool logic;						 /* NEW in example 15 */
+  char * cadena;
   lp::ExpNode *expNode;  			 /* NEW in example 16 */
   std::list<lp::ExpNode *>  *parameters;    // New in example 16; NOTE: #include<list> must be in interpreter.l, init.cpp, interpreter.cpp
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
@@ -191,6 +196,9 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* NEW in example 15 */
 %token <logic> BOOL
 /*******************************************/
+
+/* AÑADIDO CADENA */
+%token <cadena> CADENA
 
 /* MODIFIED in examples 11, 13 */
 %token <identifier> VARIABLE UNDEFINED CONSTANT BUILTIN
@@ -422,7 +430,7 @@ read:  READ LPAREN VARIABLE RPAREN
 
 	| READ_STRING LPAREN VARIABLE RPAREN
 		{
-			$$ = new lp::ReadStmt($3);
+			$$ = new lp::ReadStringStmt($3);
 		}
 ;
 
@@ -603,7 +611,10 @@ exp:	NUMBER
 		}
 ;
 
-
+exp:	CADENA
+		{
+			$$ = new lp::StringNode($1);
+		}
 
 listOfExp: 
 			/* Empty list of numeric expressions */

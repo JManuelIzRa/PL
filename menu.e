@@ -54,7 +54,7 @@ repetir
 
  borrar_pantalla;
 
- @ Fin del programa
+ # Fin del programa
  si (opcion = 0)       		
     entonces  
         lugar(10,10);
@@ -115,12 +115,12 @@ repetir
 					B1 := b;
 
 				# Se aplica el método de Euclides	
-					resto  := a modulo b;
+					resto  := a % b;
 
 				mientras (resto <> 0) hacer
 					a :=  b;
 					b := resto;
-					resto := a #mod b;
+					resto := a % b;
 				fin_mientras;
          
 				# Se muestra el resultado

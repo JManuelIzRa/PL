@@ -23,9 +23,9 @@ PALABRAS RESERVADAS:							[ ]
 	falso							[x]
 
 	leer							[x]
-	leer_cadena						[ ]
+	leer_cadena						[x-]
 
-	escribir						[ ]
+	escribir						[ ]cambiar imprimir por escribir
 	escribir_cadena					[ ]
 
 	SENTENCIA CONDICIONAL:					[ ]

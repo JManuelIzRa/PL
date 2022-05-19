@@ -35,6 +35,8 @@
 #include "../table/builtinParameter1.hpp"
 #include "../table/builtinParameter2.hpp"
 
+#include "../table/stringVariable.hpp"
+
 #include "../parser/interpreter.tab.h"
 
 
@@ -119,6 +121,54 @@ bool lp::VariableNode::evaluateBool()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+int lp::StringNode::getType()
+{
+	return CADENA;
+}
+
+
+void lp::StringNode::print()
+{
+  std::cout << "StringNode: " << this->_id;
+  std::cout << " (Type: " << this->getType() << ")" << std::endl;
+}
+
+
+std::string lp::StringNode::evaluateCad()
+{
+/*	std::string value = "";
+	if (this->getType() == CADENA)
+	{
+		// Get the identifier in the table of symbols as NumericVariable
+		lp::CadVariable *var = (lp::CadVariable *) table.getSymbol(this->_id);
+		value = var->getValue();
+		// Copy the value of the NumericVariable
+	}
+	else
+	{
+		warning("Runtime error in evaluateNumber(): the variable is not string",
+				   this->_id);
+	}
+	// Return the value of the NumericVariable
+	return value;
+	*/
+	   return this->_id;
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 void lp::ConstantNode::print() 
 {
@@ -1281,6 +1331,52 @@ void lp::ReadStmt::evaluate()
 
 		table.installSymbol(n);
 	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+void lp::ReadStringStmt::print()
+{
+  std::cout << "ReadStringStmt: read"  << std::endl;
+  std::cout << "\t";
+  std::cout << std::endl;
+}
+void lp::ReadStringStmt::evaluate()
+{
+	std::cout << BIYELLOW; 
+	std::cout << "Insert a string --> " ;
+	std::cout << RESET; 
+
+	std::string value;
+	//std::cin >> value;
+	std::getline(std::cin,value);
+
+	/* Get the identifier in the table of symbols as Variable */
+	lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
+	// Check if the type of the variable is NUMBER
+	if (var->getType() == CADENA)
+	{
+		/* Get the identifier in the table of symbols as NumericVariable */
+		lp::StringVariable *n = (lp::StringVariable *) table.getSymbol(this->_id);
+		/* Assignment the read value to the identifier */
+		n->setValue(value);
+	}
+	// The type of variable is not NUMBER
+	else
+	{
+		// Delete $1 from the table of symbols as Variable
+		table.eraseSymbol(this->_id);
+
+			// Insert $1 in the table of symbols as NumericVariable
+		// with the type NUMBER and the read value
+		lp::StringVariable *n = new lp::StringVariable(this->_id,
+									  VARIABLE,CADENA,value);
+
+		table.installSymbol(n);
+	}
+
 }
 
 
