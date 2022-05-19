@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 16 09:27:03 2022
+# Make data base, printed on Thu May 19 12:36:29 2022
 
 # Variables
 
@@ -53,7 +51,7 @@ SNAP_DATA = /var/snap/code/96
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47793
+JOURNAL_STREAM = 8:47914
 # makefile (from 'makefile', line 12)
 CFLAGS = -c -g  -Wall -ansi -O2
 # environment
@@ -83,7 +81,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/96/usr/share/code/code
 # environment
-MANAGERPID = 1421
+MANAGERPID = 1405
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -103,7 +101,7 @@ OBJECTS-ERROR = error/*.o
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1655,unix/fran-laptop1:/tmp/.ICE-unix/1655
+SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1636,unix/fran-laptop1:/tmp/.ICE-unix/1636
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -123,7 +121,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = d683078da4b148438172764f29dbc8e0
+INVOCATION_ID = 281a516f03bc43949a6618f2e5944435
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/96/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -135,7 +133,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6948
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3271
 # automatic
 %F = $(notdir $%)
 # environment
@@ -155,7 +153,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1616
+SSH_AGENT_PID = 1598
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -213,7 +211,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4f25b7cc-833a-4f26-bcb8-d9c1eb7ba8e7.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4f440160-f0a0-408b-9207-5652f4d70601.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -288,6 +286,9 @@ GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 # environment
 SNAP_REEXEC = 
 # environment
@@ -297,7 +298,6 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 WINDOWPATH = 2
 # default
- 
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
 GJS_DEBUG_OUTPUT = stderr
@@ -310,7 +310,7 @@ LC_ADDRESS = es_ES.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6994
+VSCODE_PID = 3336
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -322,9 +322,9 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 2053, inode 672600): 15 files, no impossibilities.
+# . (device 2053, inode 672600): 16 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -495,12 +495,12 @@ interpreter.exe: parser-dir error-dir table-dir ast-dir interpreter.o
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 337 B / avg = 10 B
-# current buf: size = 8162 B / used = 337 B / count = 32 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 359 B / avg = 10 B
+# current buf: size = 8162 B / used = 359 B / count = 33 / avg = 10 B
 
-# strcache performance: lookups = 56 / hit rate = 42%
+# strcache performance: lookups = 57 / hit rate = 42%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=1/56=2%
-# Finished Make data base on Mon May 16 09:27:03 2022
+# Load=33/8192=0%, Rehash=0, Collisions=1/57=2%
+# Finished Make data base on Thu May 19 12:36:29 2022
 
  

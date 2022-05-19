@@ -16,6 +16,7 @@ echo "Accessing directory ast"
 echo
 make -C ast/ 
 echo
+ 
 echo "Compiling " interpreter.cpp
 g++ -c -g  -Wall -ansi -O2 interpreter.cpp
 echo
