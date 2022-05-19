@@ -23,10 +23,10 @@ PALABRAS RESERVADAS:							[ ]
 	falso							[x]
 
 	leer							[x]
-	leer_cadena						[x-]
+	leer_cadena						[x]# leer_cadena no deberia coger una cadena que no empiece por comillas simples
 
-	escribir						[ ]cambiar imprimir por escribir
-	escribir_cadena					[ ]
+	escribir						[x]
+	escribir_cadena					[x]# Que escribir_cadena no imprima ningun otro tipo de variable
 
 	SENTENCIA CONDICIONAL:					[ ]
 		si					[x]

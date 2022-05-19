@@ -118,6 +118,30 @@ bool lp::VariableNode::evaluateBool()
 	return result;
 }
 
+std::string lp::VariableNode::evaluateString()
+{
+	
+	std::string value = "";
+	if (this->getType() == CADENA)
+	{
+		// Get the identifier in the table of symbols as NumericVariable
+		lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
+		value = var->getValue();
+		// Copy the value of the NumericVariable
+	}
+	else
+	{
+		warning("Runtime error in evaluateNumber(): the variable is not string",
+				   this->_id);
+	}
+	// Return the value of the NumericVariable
+
+	
+	return value;
+
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,8 +158,7 @@ void lp::StringNode::print()
   std::cout << " (Type: " << this->getType() << ")" << std::endl;
 }
 
-
-std::string lp::StringNode::evaluateCad()
+std::string lp::StringNode::evaluateString()
 {
 /*	std::string value = "";
 	if (this->getType() == CADENA)
@@ -1267,6 +1290,8 @@ void lp::PrintStmt::evaluate()
 	std::cout << "Print: ";
 	std::cout << RESET; 
 
+	std::string aux;
+
 	switch(this->_exp->getType())
 	{
 		case NUMBER:
@@ -1278,6 +1303,10 @@ void lp::PrintStmt::evaluate()
 			else
 				std::cout << "false" << std::endl;
 		
+			break;
+		/*Añadido por nosotros para que imprima cadenas*/
+		case CADENA:
+				std::cout << this->_exp->evaluateString() << std::endl;
 			break;
 
 		default:

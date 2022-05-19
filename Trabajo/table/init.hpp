@@ -70,7 +70,8 @@ static struct {
           std::string name ;
 	      int token;
 	      } keyword[] = { 
-	                    {"imprimir", PRINT},
+	                    {"escribir", PRINT},
+						{"escribir_cadena", PRINT_STRING},	// escribir_cadena
 	                    {"leer",  READ},
 						{"leer_cadena", READ_STRING},	// leer_cadena
 						{"si",	  IF},   	// NEW in example 17

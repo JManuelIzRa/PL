@@ -161,7 +161,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block
+%type <st> stmt asgn print read if while block print_string
 
 %type <prog> program
 
@@ -176,7 +176,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT READ READ_STRING IF ELSE WHILE 
+%token PRINT PRINT_STRING READ READ_STRING IF ELSE WHILE 
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -309,6 +309,11 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	  }
+	/*AÑADIDO POR NOSOTROS*/
+	| print_string SEMICOLON
+	  {
+		  
+	  }
 	/*  NEW in example 17 */
 	| if 
 	 {
@@ -414,7 +419,15 @@ print:  PRINT exp
 			// Create a new print node
 			 $$ = new lp::PrintStmt($2);
 		}
-;	
+;
+
+//AÑADIDO POR NOSOTROS
+print_string: PRINT_STRING exp
+		{
+			// Create a new print_string node
+			$$ = new lp::PrintStmt($2);
+		}
+
 
 read:  READ LPAREN VARIABLE RPAREN
 		{

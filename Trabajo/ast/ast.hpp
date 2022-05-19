@@ -75,6 +75,18 @@ namespace lp
 		return false;
 	}
 
+	/*Añadido por nosotros*/
+	/*!	
+		\brief   Evaluate the expression as CADENA
+		\warning Virtual function: could be redefined in the heir classes
+		\return  char *
+		\sa		 print
+	*/
+    virtual std::string evaluateString()
+	{
+		return "";
+	}
+
 };
 
 
@@ -132,6 +144,14 @@ class VariableNode : public ExpNode
 	*/
 	  bool evaluateBool();
 
+		/*!	
+		\brief   Evaluate the Variable as CADENA
+		\return  string
+		\sa		 print
+	*/
+
+	  std::string evaluateString();
+
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +194,7 @@ class StringNode : public ExpNode
 		\return  string
 		\sa		 print
 	*/
-	  std::string evaluateCad();
+	  std::string evaluateString();
 
 };
 
