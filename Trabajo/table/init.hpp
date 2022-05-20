@@ -75,6 +75,8 @@ static struct {
 	                    {"leer",  READ},
 						{"leer_cadena", READ_STRING},	// leer_cadena
 						{"si",	  IF},   	// NEW in example 17
+						{"entonces", THEN},
+						{"fin_si", END_IF},
 						{"si_no",  ELSE}, 	// NEW in example 17
 						{"mientras", WHILE},	// NEW in example 17
 						//Nuevas palabras reservadas

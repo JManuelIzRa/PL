@@ -160,23 +160,24 @@ void lp::StringNode::print()
 
 std::string lp::StringNode::evaluateString()
 {
-/*	std::string value = "";
+	/*std::string value = "";
 	if (this->getType() == CADENA)
 	{
-		// Get the identifier in the table of symbols as NumericVariable
-		lp::CadVariable *var = (lp::CadVariable *) table.getSymbol(this->_id);
+		// Get the identifier in the table of symbols as StringVariable
+		lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
 		value = var->getValue();
-		// Copy the value of the NumericVariable
+		// Copy the value of the StringVariable
 	}
 	else
 	{
 		warning("Runtime error in evaluateNumber(): the variable is not string",
 				   this->_id);
 	}
-	// Return the value of the NumericVariable
+	// Return the value of the StringVariable
 	return value;
 	*/
-	   return this->_id;
+	
+	return this->_id;
 
 }
 
@@ -1306,7 +1307,13 @@ void lp::PrintStmt::evaluate()
 			break;
 		/*Añadido por nosotros para que imprima cadenas*/
 		case CADENA:
-				std::cout << this->_exp->evaluateString() << std::endl;
+				aux = this->_exp->evaluateString();
+				if ( aux[0] == '\'' )
+				{
+					aux = aux.substr(1, aux.size()-2);
+				}
+
+				std::cout << aux << std::endl;
 			break;
 
 		default:
@@ -1384,10 +1391,11 @@ void lp::ReadStringStmt::evaluate()
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
-	// Check if the type of the variable is NUMBER
+
+	// Check if the type of the variable is CADENA
 	if (var->getType() == CADENA)
 	{
-		/* Get the identifier in the table of symbols as NumericVariable */
+		/* Get the identifier in the table of symbols as StringVariable */
 		lp::StringVariable *n = (lp::StringVariable *) table.getSymbol(this->_id);
 		/* Assignment the read value to the identifier */
 		n->setValue(value);
@@ -1404,6 +1412,7 @@ void lp::ReadStringStmt::evaluate()
 									  VARIABLE,CADENA,value);
 
 		table.installSymbol(n);
+		
 	}
 
 }
@@ -1436,31 +1445,47 @@ void lp::IfStmt::print()
 
   // Consequent
   std::cout << "\t";
-  this->_stmt1->print();
+  //this->_stmt1->print();
 
  // The alternative is printed if exists
   if (this->_stmt2 != NULL)
      {  
        std::cout << "\t";
-	   this->_stmt2->print();
+	//   this->_stmt2->print();
      }
 
   std::cout << std::endl;
 }
 
 
-void lp::IfStmt::evaluate() 
+void lp::IfStmt::evaluate()
 {
    // If the condition is true,
 	if (this->_cond->evaluateBool() == true )
-     // the consequent is run 
-	  this->_stmt1->evaluate();
+	{
+		std::list<Statement *>::iterator stmtIter;
+
+		for (stmtIter = this->_stmt1->begin(); stmtIter != this->_stmt1->end(); stmtIter++)
+		{
+			(*stmtIter)->evaluate();
+		}
+	}
+     // the consequent is run
 
     // Otherwise, the alternative is run if exists
-	else if (this->_stmt2 != NULL)
-		  this->_stmt2->evaluate();
-}
 
+	else if (this->_stmt2!=NULL)
+	{
+		std::list<Statement *>::iterator stmtIter;
+
+		for (stmtIter = this->_stmt2->begin(); stmtIter != this->_stmt2->end(); stmtIter++)
+		{
+			(*stmtIter)->evaluate();
+		}
+	}
+
+
+}
 
 
 

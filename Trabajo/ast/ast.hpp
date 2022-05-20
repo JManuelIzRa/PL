@@ -167,7 +167,7 @@ class StringNode : public ExpNode
 	/*!		
 		\brief Constructor of VariableNode
 		\param value: double
-		\post  A new NumericVariableNode is created with the name of the parameter
+		\post  A new StringVariableNode is created with the name of the parameter
 		\note  Inline function
 	*/
 	  StringNode(std::string const & value)
@@ -1689,21 +1689,21 @@ class IfStmt : public Statement
 {
  private:
   ExpNode *_cond; //!< Condicion of the if statement
-  Statement *_stmt1; //!< Statement of the consequent
-  Statement *_stmt2; //!< Statement of the alternative
+  std::list<Statement *> *_stmt1; //!< Statement list of the consequent
+  std::list<Statement *> *_stmt2; //!< Statement list of the alternative
 
   public:
 /*!		
-	\brief Constructor of Single IfStmt (without alternative)
+	\brief Constructor of Single IfStmt (without alternativ)
 	\param condition: ExpNode of the condition
 	\param statement1: Statement of the consequent
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1)
+  IfStmt(ExpNode *condition, std::list<Statement *> *statement1)
 	{
 		this->_cond = condition;
 		this->_stmt1 = statement1;
-		this->_stmt2 = NULL;
+		//this->_stmt2 = NULL;
 	}
 
 
@@ -1714,7 +1714,7 @@ class IfStmt : public Statement
 	\param statement2: Statement of the alternative
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1, Statement *statement2)
+  IfStmt(ExpNode *condition, std::list<Statement *> *statement1, std::list<Statement *> *statement2)
 	{
 		this->_cond = condition;
 		this->_stmt1 = statement1;

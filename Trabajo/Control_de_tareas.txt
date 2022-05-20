@@ -23,16 +23,16 @@ PALABRAS RESERVADAS:							[ ]
 	falso							[x]
 
 	leer							[x]
-	leer_cadena						[x]# leer_cadena no deberia coger una cadena que no empiece por comillas simples
+	leer_cadena						[x]
 
 	escribir						[x]
-	escribir_cadena					[x]# Que escribir_cadena no imprima ningun otro tipo de variable
+	escribir_cadena					[x] # Hacer que detecte la \n y \t
 
 	SENTENCIA CONDICIONAL:					[ ]
 		si					[x]
-		entonces				[ ]
-		si_no					[ ]
-		fin_si					[ ]
+		entonces				[x]
+		si_no					[x]
+		fin_si					[x]
 
 	SENTENCIA DE BUCLE MIENTRAS:				[ ]
 		mientras				[ ]
@@ -73,7 +73,9 @@ IDENTIFICADORES:								[ ]
 	NO TERMINAN  EN SUBRAYADA				[ ]
 	NO CONTIENEN DOS SUBRAYADOS SEGUIDOS			[ ]
 
-	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS		[x]
+	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS	
+
+Co-authored-by: JManuelIzRa <jmanuel.izquierdo00@gmail.com>	[x]
 
 
 										CONTROL		FECHA
