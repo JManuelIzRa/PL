@@ -26,7 +26,7 @@ PALABRAS RESERVADAS:							[ ]
 	leer_cadena						[x]
 
 	escribir						[x]
-	escribir_cadena					[x] # Hacer que detecte la \n y \t
+	escribir_cadena					[x]
 
 	SENTENCIA CONDICIONAL:					[ ]
 		si					[x]
@@ -40,8 +40,8 @@ PALABRAS RESERVADAS:							[ ]
 		fin_mientras				[ ]
 
 	SENTENCIA DE BUCLE REPETIR:				[ ]
-		repetir				[ ]
-		hasta					[ ]
+		repetir				[x]
+		hasta					[x]
 
 	SENTENCIA DE BUCLE PARA:				[ ]
 		para					[ ]

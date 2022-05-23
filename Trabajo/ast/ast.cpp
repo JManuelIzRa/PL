@@ -1312,8 +1312,29 @@ void lp::PrintStmt::evaluate()
 				{
 					aux = aux.substr(1, aux.size()-2);
 				}
-
-				std::cout << aux << std::endl;
+				
+				for(std::string::size_type it = 0; it < aux.size(); ++it)
+				{
+					if(aux[it] == '\\')
+					{
+						if(aux[it+1] == 'n')
+						{
+							std::cout << "\n";
+							it++;
+						}
+						else if(aux[it+1] == 't')
+						{
+							std::cout << "\t";
+							it++;
+						}
+					}
+					else
+					{
+						std::cout << aux[it];
+					}
+				}
+				
+				std::cout << std::endl;
 			break;
 
 		default:
@@ -1518,7 +1539,28 @@ void lp::WhileStmt::evaluate()
 
 }
 
+///////////////////////////////////////////
+///////////////////////////////////////////
+// Añadido por nosotros
 
+void lp::RepetirStmt::print()
+{
+  std::cout << "RepetirStmt: "  << std::endl;
+}
+
+void lp::RepetirStmt::evaluate()
+{
+	do
+	{
+		std::list<Statement *>::iterator stmtIter;
+
+		for (stmtIter = this->_stmt->begin(); stmtIter != this->_stmt->end(); stmtIter++)
+		{
+			(*stmtIter)->evaluate();
+		}
+	}
+	while (this->_cond->evaluateBool() == false);
+}
 
 
 

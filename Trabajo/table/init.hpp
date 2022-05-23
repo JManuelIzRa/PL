@@ -79,6 +79,14 @@ static struct {
 						{"fin_si", END_IF},
 						{"si_no",  ELSE}, 	// NEW in example 17
 						{"mientras", WHILE},	// NEW in example 17
+						{"hacer", HACER},
+						{"fin_mientras", FIN_MIENTRAS},
+						{"repetir", REPETIR},
+						{"hasta", HASTA},
+						//{"para", PARA},
+						//{"fin_para", FIN_PARA},
+						//{"desde", DESDE},
+						//{"paso", PASO},
 						//Nuevas palabras reservadas
 						{"o",OR},
 						{"y",AND},

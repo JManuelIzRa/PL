@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri May 20 09:05:50 2022
+# Make data base, printed on Mon May 23 09:06:12 2022
 
 # Variables
 
@@ -49,7 +49,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47901
+JOURNAL_STREAM = 8:49738
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -77,7 +77,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1411
+MANAGERPID = 1438
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -93,7 +93,7 @@ PATH = /home/fran/anaconda3/bin:/home/fran/anaconda3/condabin:/usr/local/sbin:/u
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1641,unix/fran-laptop1:/tmp/.ICE-unix/1641
+SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1673,unix/fran-laptop1:/tmp/.ICE-unix/1673
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = a11a2113788e4406a242600c2141aa24
+INVOCATION_ID = e9df6a30f3f046f6bd652e5408d768c2
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -125,7 +125,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4058
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4051
 # automatic
 %F = $(notdir $%)
 # environment
@@ -143,7 +143,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1603
+SSH_AGENT_PID = 1634
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -199,7 +199,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-57fdc8da-d407-40aa-810a-390ef16c20f0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b2ac89cc-94fe-452a-8e9f-01a85835ff1d.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -290,7 +290,7 @@ LC_ADDRESS = es_ES.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4106
+VSCODE_PID = 4098
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -360,6 +360,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Fri May 20 09:05:50 2022
+# Finished Make data base on Mon May 23 09:06:12 2022
 
  

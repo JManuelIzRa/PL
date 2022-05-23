@@ -1870,9 +1870,47 @@ class AST {
   void evaluate();
 };
 
+
+//Incluido por nosotros
+
+/*!	
+  \class   RepetirStmt
+  \brief   Definition of atributes and methods of RepetirStmt class
+  \note    RepetirStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+
+class RepetirStmt : public Statement
+{
+ private:
+  ExpNode *_cond;				  //!< Condition
+  std::list <Statement *> *_stmt; //!< List of statements
+
+  public:
+
+	/*!		
+	\brief Constructor of RepetirStmt 
+	\param stmtList: pointer to a list of pointers to Statement
+	\param condition: pointer to a ExpNode variable
+	\post  A new RepetirStmt is created with the parameter
+	*/
+  RepetirStmt(std::list <Statement *> *stmtList, ExpNode *condition)
+	{
+		this->_cond = condition;
+		this->_stmt = stmtList;
+	}
+
+
+  void print();
+
+
+  void evaluate();
+};
+
+
+
 // End of name space lp
 }
-
 
 
 // End of _AST_HPP_

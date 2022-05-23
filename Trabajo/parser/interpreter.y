@@ -161,7 +161,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string
+%type <st> stmt asgn print read if while block print_string repetir para desde
 
 %type <prog> program
 
@@ -176,7 +176,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE 
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO FIN_MIENTRAS HACER
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -314,6 +314,10 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 	  {
 		  
 	  }
+	| repetir SEMICOLON
+	  {
+
+	  }
 	/*  NEW in example 17 */
 	| if 
 	 {
@@ -374,14 +378,21 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE controlSymbol cond stmt 
+while:  WHILE  controlSymbol cond  HACER stmtlist  FIN_MIENTRAS
 		{
 			// Create a new while statement node
-			$$ = new lp::WhileStmt($3, $4);
+			$$ = new lp::WhileStmt($3, $5);
 
 			// To control the interactive mode
 			control--;
     }
+;
+
+repetir: REPETIR controlSymbol stmtlist HASTA  cond
+		{
+			$$ = new lp::RepetirStmt($3, $5);
+			control--;
+		}
 ;
 
 	/*  NEW in example 17 */
@@ -624,12 +635,12 @@ exp:	NUMBER
 		  // Create a new "logic negation" node	
  			$$ = new lp::NotNode($2);
 		}
-;
 
-exp:	CADENA
+	| exp CADENA
 		{
 			$$ = new lp::StringNode($1);
 		}
+;
 
 listOfExp: 
 			/* Empty list of numeric expressions */
