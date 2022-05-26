@@ -34,10 +34,10 @@ PALABRAS RESERVADAS:							[ ]
 		si_no					[x]
 		fin_si					[x]
 
-	SENTENCIA DE BUCLE MIENTRAS:				[ ] Fran
-		mientras				[ ]
-		hacer					[ ]
-		fin_mientras				[ ]
+	SENTENCIA DE BUCLE MIENTRAS:				[X]
+		mientras				[X]
+		hacer					[X]
+		fin_mientras			[X]
 
 	SENTENCIA DE BUCLE REPETIR:				[ ]
 		repetir				[x]
