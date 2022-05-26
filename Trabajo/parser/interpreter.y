@@ -149,6 +149,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
+  lp::SwitchStmt *switchOur;
 }
 
 /* Type of the non-terminal symbols */
@@ -161,9 +162,12 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repetir para desde
+%type <st> stmt asgn print read if while block print_string repetir para desde switch
 
 %type <prog> program
+
+// Añadido por nosotros
+%type <switchOur> values
 
 /* Defined tokens */
 
@@ -176,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO FIN_MIENTRAS HACER
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -309,15 +313,6 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	  }
-	/*AÑADIDO POR NOSOTROS*/
-	| print_string SEMICOLON
-	  {
-		  
-	  }
-	| repetir SEMICOLON
-	  {
-
-	  }
 	/*  NEW in example 17 */
 	| if 
 	 {
@@ -336,6 +331,19 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	 }
+	 /*AÑADIDO POR NOSOTROS*/
+	| print_string SEMICOLON
+	  {
+		  
+	  }
+	| repetir SEMICOLON
+	  {
+
+	  }
+	| switch SEMICOLON
+	  {
+
+	  }
 ;
 
 
@@ -378,7 +386,7 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE  controlSymbol cond  HACER stmtlist  FIN_MIENTRAS
+while:  WHILE  controlSymbol cond  DO stmtlist  END_WHILE
 		{
 			// Create a new while statement node
 			$$ = new lp::WhileStmt($3, $5);
@@ -402,6 +410,29 @@ cond: 	LPAREN exp RPAREN
 		}
 ;
 
+/* AÑADIDO POR NOSOTROS */
+switch:
+      SWITCH controlSymbol exp values END_SWITCH
+      {
+        $$ = new lp::SwitchStmt($3,$4);
+        control --;
+      }
+
+;
+values: VALUE controlSymbol exp COLON stmtlist values
+  		{
+
+  			$$ = new lp::SwitchStmt($3,$5,$6);
+  			control--;
+
+  		}
+  		|DEFAULT controlSymbol COLON stmtlist
+  		{
+  		  $$ = new lp::SwitchStmt($4);
+  			control--;
+
+  		}
+;
 
 asgn:   VARIABLE ASSIGNMENT exp 
 		{ 
@@ -636,7 +667,7 @@ exp:	NUMBER
  			$$ = new lp::NotNode($2);
 		}
 
-	| exp CADENA
+	| CADENA
 		{
 			$$ = new lp::StringNode($1);
 		}

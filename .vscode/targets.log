@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 23 09:06:12 2022
+# Make data base, printed on Thu May 26 16:06:48 2022
 
 # Variables
 
@@ -49,7 +51,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:49738
+JOURNAL_STREAM = 8:51823
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -77,7 +79,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1438
+MANAGERPID = 1527
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -93,7 +95,7 @@ PATH = /home/fran/anaconda3/bin:/home/fran/anaconda3/condabin:/usr/local/sbin:/u
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1673,unix/fran-laptop1:/tmp/.ICE-unix/1673
+SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1747,unix/fran-laptop1:/tmp/.ICE-unix/1747
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -113,7 +115,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = e9df6a30f3f046f6bd652e5408d768c2
+INVOCATION_ID = 8d4471a770ed48569692aac1c7540a3a
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -125,7 +127,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4051
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3459
 # automatic
 %F = $(notdir $%)
 # environment
@@ -143,7 +145,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1634
+SSH_AGENT_PID = 1709
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -199,7 +201,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b2ac89cc-94fe-452a-8e9f-01a85835ff1d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4fd28528-8654-44e9-91dd-6028dc270ec0.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -279,8 +281,6 @@ WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
  
-make: *** No rule to make target 'all'.  Stop.
-
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # default
@@ -290,7 +290,7 @@ LC_ADDRESS = es_ES.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4098
+VSCODE_PID = 3511
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -360,6 +360,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Mon May 23 09:06:12 2022
+# Finished Make data base on Thu May 26 16:06:49 2022
 
  

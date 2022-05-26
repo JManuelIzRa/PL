@@ -165,9 +165,9 @@ class StringNode : public ExpNode
 	public:
 
 	/*!		
-		\brief Constructor of VariableNode
+		\brief Constructor of StringNode
 		\param value: double
-		\post  A new StringVariableNode is created with the name of the parameter
+		\post  A new StringNode is created with the name of the parameter
 		\note  Inline function
 	*/
 	  StringNode(std::string const & value)
@@ -176,21 +176,21 @@ class StringNode : public ExpNode
 		}
 
 	/*!	
-		\brief   Type of the Variable
+		\brief   Type of the String
 		\return  int
 		\sa		 print
 	*/
 	 int getType();
 
 	/*!
-		\brief   Print the Variable
+		\brief   Print the String
 		\return  void
 		\sa		 evaluate()
 	*/
 	  void print();
 
 	/*!
-		\brief   Evaluate the Variable as NUMBER
+		\brief   Evaluate the String as NUMBER
 		\return  string
 		\sa		 print
 	*/
@@ -1755,7 +1755,7 @@ class WhileStmt : public Statement
 {
  private:
   ExpNode *_cond; //!< Condicion of the while statement
-  Statement *_stmt; //!< Statement of the body of the while loop
+  std::list<Statement *> *_stmt; //!< Statement of the body of the while loop
 
   public:
 /*!		
@@ -1764,7 +1764,7 @@ class WhileStmt : public Statement
 	\param statement: Statement of the body of the loop 
 	\post  A new WhileStmt is created with the parameters
 */
-  WhileStmt(ExpNode *condition, Statement *statement)
+  WhileStmt(ExpNode *condition, std::list<Statement *> *statement)
 	{
 		this->_cond = condition;
 		this->_stmt = statement;
@@ -1907,6 +1907,68 @@ class RepetirStmt : public Statement
   void evaluate();
 };
 
+
+//Incluido por nosotros
+
+/*!	
+  \class   SwitchStmt
+  \brief   Definition of atributes and methods of SwitchStmt class
+  \note    SwitchStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+class SwitchStmt : public Statement
+{
+	private:
+		ExpNode *_exp;
+		std::list <Statement *> *_stmts;
+		SwitchStmt *_valores;
+		int _type;
+		//!< Statement of the body of the while loop
+
+
+	public:
+	/*!
+	\brief Constructor of SwitchStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop
+	\post  A new SwitchStmt is created with the parameters
+	*/
+	SwitchStmt(ExpNode * exp, std::list<Statement *> *stmts, SwitchStmt *valores)
+	{
+	this->_exp = exp;
+	this->_stmts = stmts;
+	this->_valores = valores;
+	_type = 0;
+
+
+	}
+	SwitchStmt(std::list<Statement *> *stmts)
+	{
+	this->_stmts = stmts;
+	_type = 1;
+
+	}
+
+	/*!
+	\brief   Print the SwitchStmt
+	\return  void
+	\sa		 evaluate
+	*/
+	void print();
+
+	/*!
+	\brief   Evaluate the SwitchStmt
+	\return  void
+	\sa		 print
+	*/
+	void evaluate(double valor);
+
+	void evaluate(){}
+
+	double getValor(){
+		return this->_exp->evaluateNumber();
+	}
+};
 
 
 // End of name space lp

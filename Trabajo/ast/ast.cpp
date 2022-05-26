@@ -1523,7 +1523,12 @@ void lp::WhileStmt::print()
 
   // Body of the while loop
   std::cout << "\t";
-  this->_stmt->print();
+  std::list<Statement *>::iterator stmtIter;
+
+  for (stmtIter = this->_stmt->begin(); stmtIter != this->_stmt->end(); stmtIter++)
+  {
+	(*stmtIter)->evaluate();
+  }
 
   std::cout << std::endl;
 }
@@ -1534,7 +1539,12 @@ void lp::WhileStmt::evaluate()
   // While the condition is true. the body is run 
   while (this->_cond->evaluateBool() == true)
   {	
-	  this->_stmt->evaluate();
+		std::list<Statement *>::iterator stmtIter;
+
+		for (stmtIter = this->_stmt->begin(); stmtIter != this->_stmt->end(); stmtIter++)
+		{
+			(*stmtIter)->evaluate();
+		}
   }
 
 }
@@ -1562,6 +1572,53 @@ void lp::RepetirStmt::evaluate()
 	while (this->_cond->evaluateBool() == false);
 }
 
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+// Añadido por nosotros
+
+void lp::SwitchStmt::print()
+{
+  std::cout << "SwitchStmt: "  << std::endl;
+  // Condition
+  std::cout << "\t";
+
+  std::cout << std::endl;
+}
+
+
+void lp::SwitchStmt::evaluate(double valor)
+{
+	//VALUE
+	if(this->_type == 0){
+		if(this->_exp->evaluateNumber() == valor){
+
+			std::list<Statement *>::iterator stmtIter;
+
+			for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+			{
+				(*stmtIter)->evaluate();
+
+			}
+		}
+		else
+	  		this->_valores->evaluate(valor);
+
+	}
+
+
+	//DEFECT
+	if(this->_type == 1){
+		std::list<Statement *>::iterator stmtIter;
+
+	  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	  {
+	     (*stmtIter)->evaluate();
+
+	  }
+	}
+
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

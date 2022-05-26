@@ -65,37 +65,42 @@ extern int yydebug;
     FIN_PARA = 271,
     DESDE = 272,
     PASO = 273,
-    FIN_MIENTRAS = 274,
-    HACER = 275,
-    LETFCURLYBRACKET = 276,
-    RIGHTCURLYBRACKET = 277,
-    ASSIGNMENT = 278,
-    COMMA = 279,
-    NUMBER = 280,
-    BOOL = 281,
-    CADENA = 282,
-    VARIABLE = 283,
-    UNDEFINED = 284,
-    CONSTANT = 285,
-    BUILTIN = 286,
-    OR = 287,
-    AND = 288,
-    GREATER_OR_EQUAL = 289,
-    LESS_OR_EQUAL = 290,
-    GREATER_THAN = 291,
-    LESS_THAN = 292,
-    EQUAL = 293,
-    NOT_EQUAL = 294,
-    NOT = 295,
-    PLUS = 296,
-    MINUS = 297,
-    MULTIPLICATION = 298,
-    DIVISION = 299,
-    MODULO = 300,
-    LPAREN = 301,
-    RPAREN = 302,
-    UNARY = 303,
-    POWER = 304
+    DO = 274,
+    END_WHILE = 275,
+    SWITCH = 276,
+    VALUE = 277,
+    DEFAULT = 278,
+    END_SWITCH = 279,
+    COLON = 280,
+    LETFCURLYBRACKET = 281,
+    RIGHTCURLYBRACKET = 282,
+    ASSIGNMENT = 283,
+    COMMA = 284,
+    NUMBER = 285,
+    BOOL = 286,
+    CADENA = 287,
+    VARIABLE = 288,
+    UNDEFINED = 289,
+    CONSTANT = 290,
+    BUILTIN = 291,
+    OR = 292,
+    AND = 293,
+    GREATER_OR_EQUAL = 294,
+    LESS_OR_EQUAL = 295,
+    GREATER_THAN = 296,
+    LESS_THAN = 297,
+    EQUAL = 298,
+    NOT_EQUAL = 299,
+    NOT = 300,
+    PLUS = 301,
+    MINUS = 302,
+    MULTIPLICATION = 303,
+    DIVISION = 304,
+    MODULO = 305,
+    LPAREN = 306,
+    RPAREN = 307,
+    UNARY = 308,
+    POWER = 309
   };
 #endif
 
@@ -114,8 +119,9 @@ union YYSTYPE
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
+  lp::SwitchStmt *switchOur;
 
-#line 119 "interpreter.tab.h"
+#line 125 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
