@@ -198,7 +198,6 @@ class StringNode : public ExpNode
 
 };
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1970,6 +1969,139 @@ class SwitchStmt : public Statement
 	}
 };
 
+
+//Incluido por nosotros
+
+/*!	
+  \class   EraseScreenStmt
+  \brief   Definition of atributes and methods of EraseScreenStmt class
+  \note    EraseScreenStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+class EraseScreenStmt : public Statement
+{
+ private:
+
+  //!< Statement of the body of the while loop
+
+
+  public:
+/*!
+	\brief Constructor of EraseScreenStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop
+	\post  A new EraseScreenStmt is created with the parameters
+*/
+  EraseScreenStmt()
+	{
+
+	}
+
+/*!
+	\brief   Print the EraseScreenStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the EraseScreenStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+
+};
+
+
+//Incluido por nosotros
+
+/*!	
+  \class   IntegerDivisionStmt
+  \brief   Definition of atributes and methods of IntegerDivisionStmt class
+  \note    IntegerDivisionStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+class IntegerDivisionNode: public NumericOperatorNode
+{
+	public:
+
+  IntegerDivisionNode(ExpNode *L, ExpNode *R): NumericOperatorNode(L,R)
+  {
+		// Empty
+  }
+/*!
+	\brief   Print the DivisionNode
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the DivisionNode
+	\return  double
+	\sa		 print
+*/
+  double evaluateNumber();
+};
+
+
+//Incluido por nosotros
+/*!
+  \class   StringOperatorNode
+  \brief   Definition of atributes and methods of StringOperatorNode class
+  \note    StringOperatorNode Class publicly inherits from OperatorNode class
+  \warning Abstract class, because it does not redefine the print method of ExpNode
+*/
+class StringOperatorNode : public OperatorNode {
+	public:
+
+	/*!
+		\brief Constructor of StringOperatorNode uses OperatorNode's constructor as members initializer
+		\param L: pointer to ExpNode
+		\param R: pointer to ExpNode
+		\post  A new StringOperatorNode is created with the parameters
+	*/
+    StringOperatorNode(ExpNode *L, ExpNode *R): OperatorNode(L,R)
+	{
+		//	Empty
+	}
+
+	/*!
+	\brief   Get the type of the children expressions
+	\return  int
+	\sa		 print()
+	*/
+	int getType();
+};
+
+
+//Incluido por nosotros
+/*!	
+  \class   ConcatNode
+  \brief   Definition of atributes and methods of ConcatNode class
+  \note    ConcatNode Class publicly inherits from StringOperatorNode class 
+		   and adds its own print and evaluate functions
+*/
+class ConcatNode : public StringOperatorNode
+{
+  public:
+/*!
+	\brief Constructor of ConcatNode uses StringOperatorNode's constructor as members initializer
+	\param L: pointer to ExpNode
+	\param R: pointer to ExpNode
+	\post  A new ConcatNode is created with the parameter
+*/
+  ConcatNode(ExpNode *L, ExpNode *R) : StringOperatorNode(L,R)
+  {
+		// Empty
+  }
+
+
+  void print();
+
+  std::string evaluateString();
+};
 
 // End of name space lp
 }

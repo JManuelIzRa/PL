@@ -329,6 +329,22 @@ int lp::NumericOperatorNode::getType()
 	return	result;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+int lp::StringOperatorNode::getType()
+{
+	int result = 0;
+
+	if ( (this->_left->getType() == CADENA) and (this->_right->getType() == CADENA))
+		result = CADENA;
+	else
+		warning("Runtime error: incompatible types for", "String Operator");
+
+	return	result;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -559,7 +575,47 @@ double lp::DivisionNode::evaluateNumber()
   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Añadido por nosotros
+void lp::IntegerDivisionNode::print()
+{
+  std::cout << "IntegerSivisionNode: /" << std::endl;
+  std::cout << "\t";
+	this->_left->print();
+	std::cout << "\t";
+	this->_right->print();
+}
 
+double lp::IntegerDivisionNode::evaluateNumber()
+{
+	int result = 0;
+
+	// Ckeck the types of the expressions
+	if (this->getType() == NUMBER)
+	{
+		int leftNumber, rightNumber;
+
+		leftNumber = this->_left->evaluateNumber();
+		rightNumber = this->_right->evaluateNumber();
+
+		// The divisor is not zero
+    	if(std::abs(rightNumber) > ERROR_BOUND)
+		{
+				result = leftNumber / rightNumber;
+		}
+		else
+		{
+			warning("Runtime error", "Division by zero");
+		}
+	}
+	else
+	{
+		warning("Runtime error: the expressions are not numeric for", "Division");
+	}
+
+  return result;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -605,7 +661,7 @@ double lp::ModuloNode::evaluateNumber()
 
 void lp::PowerNode::print() 
 {
-  std::cout << "PowerNode: ^"  << std::endl;
+  std::cout << "PowerNode: **"  << std::endl;
   std::cout << "\t"; 
 	this->_left->print();
 	std::cout << "\t"; 
@@ -624,6 +680,35 @@ double lp::PowerNode::evaluateNumber()
 	else
 	{
 		warning("Runtime error: the expressions are not numeric for", "Power");
+	}
+
+  return result;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Añadido por nosotros
+void lp::ConcatNode::print()
+{
+  std::cout << "ConcatNode: ||"  << std::endl;
+  std::cout << "\t";
+	this->_left->print();
+	std::cout << "\t";
+	this->_right->print();
+}
+
+std::string lp::ConcatNode::evaluateString()
+{
+	std::string result = "";
+
+	// Ckeck the types of the expressions
+	if (this->getType() == CADENA)
+	{
+		result = this->_left->evaluateString() + this->_right->evaluateString();
+	}
+	else
+	{
+		warning("Runtime error: the expressions are not numeric for ", "Plus");
 	}
 
   return result;
@@ -1620,6 +1705,26 @@ void lp::SwitchStmt::evaluate(double valor)
 
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Añadido por nosotros
+void lp::EraseScreenStmt::print()
+{
+  std::cout << "EraseScreenStmt: "  << std::endl;
+
+  std::cout << std::endl;
+}
+
+
+void lp::EraseScreenStmt::evaluate()
+{
+  // While the condition is true. the body is run
+
+	std::cout<<CLEAR_SCREEN;
+
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

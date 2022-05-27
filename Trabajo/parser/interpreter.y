@@ -162,7 +162,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repetir para desde switch
+%type <st> stmt asgn print read if while block print_string repetir para desde switch erase_screen
 
 %type <prog> program
 
@@ -180,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON ERASE_SCREEN
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -224,7 +224,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %left PLUS MINUS 
 
 /* MODIFIED in example 5 */
-%left MULTIPLICATION DIVISION MODULO
+%left MULTIPLICATION DIVISION MODULO INTEGER_DIV CONCAT
 
 %left LPAREN RPAREN
 
@@ -344,6 +344,10 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 	  {
 
 	  }
+	| erase_screen SEMICOLON
+	{
+
+	}
 ;
 
 
@@ -414,7 +418,7 @@ cond: 	LPAREN exp RPAREN
 switch:
       SWITCH controlSymbol exp values END_SWITCH
       {
-        $$ = new lp::SwitchStmt($3,$4);
+       /* $$ = new lp::SwitchStmt($3,$4);*/
         control --;
       }
 
@@ -520,6 +524,13 @@ exp:	NUMBER
 		{
 		  // Create a new division node	
 		  $$ = new lp::DivisionNode($1, $3);
+	   }
+
+	| 	exp INTEGER_DIV exp
+		{
+		  // Create a new division node
+		 $$ = new lp::IntegerDivisionNode($1, $3);
+
 	   }
 
 	| 	LPAREN exp RPAREN
@@ -671,6 +682,20 @@ exp:	NUMBER
 		{
 			$$ = new lp::StringNode($1);
 		}
+	
+	| exp CONCAT exp
+		{
+			$$ = new  lp::ConcatNode($1, $3);
+		}
+;
+
+
+/* Añadido por nosotros*/
+erase_screen:   ERASE_SCREEN controlSymbol
+  {
+    $$ = new lp::EraseScreenStmt();
+    control--;
+  }
 ;
 
 listOfExp: 

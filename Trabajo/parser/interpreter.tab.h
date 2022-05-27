@@ -72,35 +72,38 @@ extern int yydebug;
     DEFAULT = 278,
     END_SWITCH = 279,
     COLON = 280,
-    LETFCURLYBRACKET = 281,
-    RIGHTCURLYBRACKET = 282,
-    ASSIGNMENT = 283,
-    COMMA = 284,
-    NUMBER = 285,
-    BOOL = 286,
-    CADENA = 287,
-    VARIABLE = 288,
-    UNDEFINED = 289,
-    CONSTANT = 290,
-    BUILTIN = 291,
-    OR = 292,
-    AND = 293,
-    GREATER_OR_EQUAL = 294,
-    LESS_OR_EQUAL = 295,
-    GREATER_THAN = 296,
-    LESS_THAN = 297,
-    EQUAL = 298,
-    NOT_EQUAL = 299,
-    NOT = 300,
-    PLUS = 301,
-    MINUS = 302,
-    MULTIPLICATION = 303,
-    DIVISION = 304,
-    MODULO = 305,
-    LPAREN = 306,
-    RPAREN = 307,
-    UNARY = 308,
-    POWER = 309
+    ERASE_SCREEN = 281,
+    LETFCURLYBRACKET = 282,
+    RIGHTCURLYBRACKET = 283,
+    ASSIGNMENT = 284,
+    COMMA = 285,
+    NUMBER = 286,
+    BOOL = 287,
+    CADENA = 288,
+    VARIABLE = 289,
+    UNDEFINED = 290,
+    CONSTANT = 291,
+    BUILTIN = 292,
+    OR = 293,
+    AND = 294,
+    GREATER_OR_EQUAL = 295,
+    LESS_OR_EQUAL = 296,
+    GREATER_THAN = 297,
+    LESS_THAN = 298,
+    EQUAL = 299,
+    NOT_EQUAL = 300,
+    NOT = 301,
+    PLUS = 302,
+    MINUS = 303,
+    MULTIPLICATION = 304,
+    DIVISION = 305,
+    MODULO = 306,
+    INTEGER_DIV = 307,
+    CONCAT = 308,
+    LPAREN = 309,
+    RPAREN = 310,
+    UNARY = 311,
+    POWER = 312
   };
 #endif
 
@@ -121,7 +124,7 @@ union YYSTYPE
   lp::AST *prog;					 /* NEW in example 16 */
   lp::SwitchStmt *switchOur;
 
-#line 125 "interpreter.tab.h"
+#line 128 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

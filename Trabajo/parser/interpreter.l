@@ -57,9 +57,7 @@ DIGIT  [0-9]
 
 LETTER [a-zA-Z]
 
-NUMBER1 {DIGIT}+\.?
-
-NUMBER2 {DIGIT}*\.{DIGIT}+
+NUMBER {DIGIT}+(\.{DIGIT}+)?([Ee][+|-]?{DIGIT}+)?
 
 IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
 
@@ -94,7 +92,7 @@ CADENA	 "'"([^']|"\\\'")*"'"
 			return COMMA;
 		}
 
-{NUMBER1}|{NUMBER2}  {
+{NUMBER}  {
 					  /* MODIFIED in example 4 */
 					  /* Conversion of type and sending of the numerical value to the parser */
 					   yylval.number = atof(yytext); 
@@ -167,6 +165,7 @@ CADENA	 "'"([^']|"\\\'")*"'"
 
 "*"	    { return MULTIPLICATION; } 	/* NEW in example 3 */
 "/"     { return DIVISION; } 		/* NEW in example 3 */
+"//"     { return INTEGER_DIV; } 		/* Añadido por nosotros */
 
 "("     { return LPAREN; } 			/* NEW in example 3 */
 ")"	    { return RPAREN; } 			/* NEW in example 3 */
@@ -175,9 +174,9 @@ CADENA	 "'"([^']|"\\\'")*"'"
 
 "%"     { return MODULO; }			/* NEW in example 5 */
 
-"^"	    { return POWER; }			/* NEW in example 5 */
+"**"	    { return POWER; }			/* Cambiado por nosotros */
 
-"=" 	{ return ASSIGNMENT; }		/* NEW in example 7 */
+":=" 	{ return ASSIGNMENT; }		/* NEW in example 7 */
 
 
 "=="	{ return EQUAL; }			/* NEW in example 15 */
@@ -194,14 +193,13 @@ CADENA	 "'"([^']|"\\\'")*"'"
 
 "!"		{ return NOT; }				/* NEW in example 15 */
 
-"||"	{ return OR; }				/* NEW in example 15 */
-
 "&&"	{ return AND; }				/* NEW in example 15 */
 
 "{"		{ return LETFCURLYBRACKET; } 	/* NEW in example 17 */
 
 "}"		{ return RIGHTCURLYBRACKET; }	/* NEW in example 17 */
 
+"||"	{return CONCAT;}
 
 
 ^# { /* The interpreter finishes when the symbol # is written at the beginning of the line */
