@@ -116,12 +116,12 @@ OPERADORES:									[ ]
 	ALFANUMERICOS						[x]
 		CONCATENACION ||				[x]
 
-	RELACIONALES CON NÚMEROS Y CADENAS			[ ] Revisar si estan todos y modificar los que tengan una sintaxis distinta, Fran
-		MENOR QUE <					[ ]
-		MENOR O IGUAL QUE <=				[ ]
+	RELACIONALES CON NÚMEROS Y CADENAS			[X]
+		MENOR QUE <					[X]
+		MENOR O IGUAL QUE <=				[X]
 		MAYOR QUE >					[X]
-		MAYOR O IGUAL QUE >=				[ ]
-		DISTINTO DE <>					[ ]
+		MAYOR O IGUAL QUE >=				[X]
+		DISTINTO DE <>					[X]
 
 	LOGICOS							[ ] Revisar si estan todos, creo q si, Jose
 		DISYUNCIÓN o					[ ]
@@ -133,7 +133,7 @@ OPERADORES:									[ ]
 OTROS:									[ ]								
 -------------------------------------------------------------------------------------
 	COMENTARIOS							[ ]
-		VARIAS LINEAS: DELIMITADORES << ... >> 		[ ] Fran, utilizando la implementacion que hiciste en Flex con estados, no se si la tendras por ahi
+		VARIAS LINEAS: DELIMITADORES << ... >> 		[X]
 		UNA LÍNEA: DELIMITADOR #		   		[ ] Jose
 
 	FIN DE LINEA ;							[ ] El SEMICOLON yo diria q lo coge ya sin problema
@@ -142,9 +142,9 @@ OTROS:									[ ]
 -------------------------------------------------------------------------------------
 SENTENCIAS DE CONTROL:							[ ]						
 -------------------------------------------------------------------------------------
-	ASIGNACION						[ ] Una vez cambiada la sintaxis diria que ya deberia ir sin problema
-		IDENTIFICADOR := EXPR NUMÉRICA	[ ]
-		IDENTIFICADOR := EXPR ALFANUMÉRICA	[ ]
+	ASIGNACION						[X]
+		IDENTIFICADOR := EXPR NUMÉRICA	[X]
+		IDENTIFICADOR := EXPR ALFANUMÉRICA	[X]
 
 	LECTURA						[x]
 		leer(identificador)			[x]
