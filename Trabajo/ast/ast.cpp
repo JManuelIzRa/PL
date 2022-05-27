@@ -1026,7 +1026,7 @@ bool lp::EqualNode::evaluateBool()
 
 void lp::NotEqualNode::print()
 {
-  std::cout << "NotEqualNode: !=" << std::endl;
+  std::cout << "NotEqualNode: <>" << std::endl;
   std::cout << "\t"; 
 	this->_left->print();
 	std::cout << "\t"; 
@@ -1173,7 +1173,7 @@ bool lp::NotNode::evaluateBool()
 
 void lp::AssignmentStmt::print() 
 {
-  std::cout << "assignment_node: ="  << std::endl;
+  std::cout << "assignment_node: :="  << std::endl;
   std::cout << "\t";
   std::cout << this->_id << std::endl;
   std::cout << "\t";
@@ -1262,6 +1262,36 @@ void lp::AssignmentStmt::evaluate()
 					// with the type BOOL and the value 
 					lp::LogicalVariable *v = new lp::LogicalVariable(this->_id,
 											VARIABLE,BOOL,value);
+					table.installSymbol(v);
+				}
+			}
+			break;
+
+			case CADENA:
+			{
+				std::string value;
+				// evaluate the expression as CADENA
+			 	value = this->_exp->evaluateString();
+
+				// Check the type of the first varible
+				if (firstVar->getType() == CADENA)
+				{
+				  	// Get the identifier in the table of symbols as CadenaVariable
+					lp::StringVariable *v = (lp::StringVariable *) table.getSymbol(this->_id);
+
+					// Assignment the value to the identifier in the table of symbols
+					v->setValue(value);
+				}
+				// The type of variable is not CADENA
+				else
+				{
+					// Delete the variable from the table of symbols 
+					table.eraseSymbol(this->_id);
+
+					// Insert the variable in the table of symbols as CadenaVariable 
+					// with the type CADENA and the value 
+					lp::StringVariable *v = new lp::StringVariable(this->_id,
+											VARIABLE,CADENA,value);
 					table.installSymbol(v);
 				}
 			}
