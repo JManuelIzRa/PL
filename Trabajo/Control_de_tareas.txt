@@ -28,7 +28,7 @@ PALABRAS RESERVADAS:							[ ]
 	escribir						[x]
 	escribir_cadena					[x]
 
-	SENTENCIA CONDICIONAL:					[ ]
+	SENTENCIA CONDICIONAL:					[X]
 		si					[x]
 		entonces				[x]
 		si_no					[x]
@@ -39,17 +39,17 @@ PALABRAS RESERVADAS:							[ ]
 		hacer					[X]
 		fin_mientras			[X]
 
-	SENTENCIA DE BUCLE REPETIR:				[ ]
+	SENTENCIA DE BUCLE REPETIR:				[X]
 		repetir				[x]
 		hasta					[x]
 
-	SENTENCIA DE BUCLE PARA:				[ ] Jose
-		para					[ ]
-		desde					[ ]
-		hasta					[ ]
-		paso					[ ]
-		hacer					[ ]
-		fin_para				[ ]
+	SENTENCIA DE BUCLE PARA:				[X] Jose
+		para					[X]
+		desde					[X]
+		hasta					[X]
+		paso					[X]
+		hacer					[X]
+		fin_para				[X]
 
 	SENTENCIA DE SELECCIÓN MÚLTIPLE:			[ ] Fran
 		segun					[ ]
@@ -90,10 +90,10 @@ IDENTIFICADORES:								[ ]
 CADENA:									[ ]		
 -------------------------------------------------------------------------------------
 	CARACTERES DELIMITADOS POR COMILLAS SIMPLES 		[x]
-	INCLUYE COMILLA SIMPLE CON  \'			[ ] Jose
+	INCLUYE COMILLA SIMPLE CON  \'			[X]
 	COMILLAS EXTERIORES NO SON PARTE DE LA CADENA 	[x]
 
-	INTERPRETA \n  \t  \'					[] Jose, falta el \'
+	INTERPRETA \n  \t  \'					[X]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
@@ -122,6 +122,7 @@ OPERADORES:									[ ]
 		MAYOR QUE >					[X]
 		MAYOR O IGUAL QUE >=				[X]
 		DISTINTO DE <>					[X]
+		IGUALDAD ==						[X]
 
 	LOGICOS							[ ] Revisar si estan todos, creo q si, Jose
 		DISYUNCIÓN o					[ ]

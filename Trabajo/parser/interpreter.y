@@ -162,7 +162,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repetir para desde switch erase_screen
+%type <st> stmt asgn print read if while block print_string repeat for switch erase_screen
 
 %type <prog> program
 
@@ -180,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPETIR HASTA PARA FIN_PARA DESDE PASO DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON ERASE_SCREEN
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON ERASE_SCREEN
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -336,7 +336,11 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 	  {
 		  
 	  }
-	| repetir SEMICOLON
+	| repeat SEMICOLON
+	  {
+
+	  }
+	| for SEMICOLON
 	  {
 
 	  }
@@ -400,7 +404,7 @@ while:  WHILE  controlSymbol cond  DO stmtlist  END_WHILE
     }
 ;
 
-repetir: REPETIR controlSymbol stmtlist HASTA  cond
+repeat: REPEAT controlSymbol stmtlist UNTIL  cond
 		{
 			$$ = new lp::RepetirStmt($3, $5);
 			control--;
@@ -423,6 +427,25 @@ switch:
       }
 
 ;
+
+for:
+    FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
+	{
+			$$ = new lp::ForStmt($3, $5, $7, $9);
+			control--;
+	}
+  	| FOR controlSymbol VARIABLE FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
+	{
+    		$$ = new lp::ForStmt($3, $5, $7, $9, $11);
+    		control--;
+  	}
+;
+
+
+
+
+
+
 values: VALUE controlSymbol exp COLON stmtlist values
   		{
 

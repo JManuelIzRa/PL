@@ -1650,7 +1650,7 @@ class EmptyStmt : public Statement
 
   public:
 /*!		
-	\brief Constructor of  WhileStmt
+	\brief Constructor of  EmptyStmt
 	\post  A new EmptyStmt is created 
 */
   EmptyStmt()
@@ -1783,6 +1783,70 @@ class WhileStmt : public Statement
 	\sa		 print
 */
   void evaluate();
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+class ForStmt : public Statement
+{
+ 	private:
+  		std::string _id; //!< 
+  		ExpNode *_from; //!< Starting point of the loop
+  		ExpNode *_until; //!< Condition to stop the loop
+  		ExpNode *_step; //!< How much we add betweens iterations
+
+  		std::list<Statement *> *_stmts; //!< Sequence of instrutcions
+
+  	public:
+		/*!
+			\brief Constructor of ForStmt without PASS
+			\param from: Value of the starting point
+			\param until: Value of the end point
+			\param statement: List of instructions
+			\post  A new ForStmt is created with the parameters
+		*/
+  		ForStmt(std::string id, ExpNode *from, ExpNode *until, std::list<Statement*> *statement)
+		{
+			this->_id = id;
+    		this->_from = from;
+    		this->_until = until;
+			this->_stmts = statement;
+
+		}
+
+
+		/*!
+			\brief Constructor of ForStmt without PASS
+			\param from: Value of the starting point
+			\param until: Value of the end point
+			\param step: Value of the increment
+			\param statement: List of instructions
+			\post  A new ForStmt is created with the parameters
+		*/
+  		ForStmt(std::string id, ExpNode *from, ExpNode *until, ExpNode *pass, std::list<Statement*> *statement)
+		{
+    		this->_id = id;
+    		this->_from = from;
+    		this->_until = until;
+    		this->_step = pass;
+			this->_stmts = statement;
+		}
+
+
+		/*!
+			\brief   Print the ForStmt
+			\return  void
+			\sa		 evaluate
+		*/
+		void print();
+
+		/*!
+			\brief   Evaluate the ForStmt
+			\return  void
+			\sa		 print
+		*/
+		void evaluate();
 };
 
 

@@ -1442,6 +1442,11 @@ void lp::PrintStmt::evaluate()
 							std::cout << "\t";
 							it++;
 						}
+						else if(aux[it+1] == '\'')
+						{
+							std::cout << "'";
+							it++;
+						}
 					}
 					else
 					{
@@ -1685,6 +1690,98 @@ void lp::RepetirStmt::evaluate()
 		}
 	}
 	while (this->_cond->evaluateBool() == false);
+}
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+// Añadido por nosotros
+
+void lp::ForStmt::print()
+{
+
+  std::cout << "ForStmt: "  << std::endl;
+
+}
+
+void lp::ForStmt::evaluate()
+{
+
+	lp::Variable *iteratorVar = (lp::Variable *) table.getSymbol(this->_id);
+	bool iteratorUndefined = iteratorVar->getType() == UNDEFINED;
+	
+	if (iteratorUndefined) 
+	{
+		table.eraseSymbol(this->_id);
+		iteratorVar = new lp::NumericVariable(this->_id,VARIABLE,NUMBER,0);
+		table.installSymbol(iteratorVar);
+	}
+
+
+	if (iteratorVar->getType() == NUMBER) 
+	{
+		lp::NumericVariable *it = (lp::NumericVariable*)table.getSymbol(this->_id);
+		
+		if(this->_from->getType() == NUMBER)
+		{
+			it->setValue(this->_from->evaluateNumber());
+
+			if(this->_until->getType() == NUMBER)
+			{
+				double end = this->_until->evaluateNumber();
+				double step = 1;
+				
+				if (this->_step != NULL) 
+				{
+					if (this->_step->getType() == NUMBER) 
+					{
+						step = this->_step->evaluateNumber();
+					}
+					else 
+					{
+						warning("Runtime error: incompatible types for", "paso");
+					}
+				}
+				//Check if the for loop is infinite
+				
+				if ((step == 0) || (step > 0 && it->getValue() > end) || (step < 0 && it->getValue() < end))
+				{
+					warning("Runtime error: infinite for loop detected", "");
+				}
+				else 
+				{
+					std::list<Statement*>::iterator stmtIt;
+					
+					while (step > 0 ? it->getValue() <= end : it->getValue() >= end) 
+					{
+						for (stmtIt = this->_stmts->begin(); stmtIt != this->_stmts->end();stmtIt++) 
+						{
+							(*stmtIt)->evaluate();
+						}
+							it->setValue(it->getValue() + step);
+					}
+				}
+			}
+			else
+			{
+				warning("Runtime error: incompatible types for", "hasta");
+			}
+		}
+		else
+		{
+			warning("Runtime error: incompatible types for", "desde");
+		}
+
+	}
+	else 
+	{
+		warning("Runtime error in para: the iterator is not numeric", this->_id);
+	}
+
+	if (iteratorUndefined) 
+	{
+		table.eraseSymbol(this->_id);
+	}
 }
 
 
