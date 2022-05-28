@@ -133,11 +133,11 @@ OPERADORES:									[ ]
 -------------------------------------------------------------------------------------
 OTROS:									[ ]								
 -------------------------------------------------------------------------------------
-	COMENTARIOS							[ ]
+	COMENTARIOS							[X]
 		VARIAS LINEAS: DELIMITADORES << ... >> 		[X]
-		UNA LÍNEA: DELIMITADOR #		   		[ ] Jose
+		UNA LÍNEA: DELIMITADOR #		   		[X] 
 
-	FIN DE LINEA ;							[ ] El SEMICOLON yo diria q lo coge ya sin problema
+	FIN DE LINEA ;							[] El SEMICOLON yo diria q lo coge ya sin problema
 
 									CONTROL		FECHA
 -------------------------------------------------------------------------------------
@@ -204,9 +204,9 @@ COMANDOS ESPECIALES:								[ ] Asignados arriba
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-OBSERVACIONES:									[ ]	WTF? 	
+OBSERVACIONES:									[X]	 	
 -------------------------------------------------------------------------------------
-	CAMBIO DE TIPO DINÁMICO					[ ]
+	CAMBIO DE TIPO DINÁMICO					[X]
 
 
 										CONTROL		FECHA
@@ -249,3 +249,13 @@ OPCIONALES:									[ ] Los dos si nos da tiempo
 	OPERADIRES ARITMETICOS Y ASIGNACION (+:=,-:=)	[ ]
 	OTROS:							[ ]
 
+
+	LEER_CADENA LANZA ERRORES CUANDO LA CADENA ESTÁ MAL INTRODUCIDA, EJEMPLOS:
+		'hola
+		hola'
+		hola
+		989
+
+		Correcto:
+		'hola'
+		'989'

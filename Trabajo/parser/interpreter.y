@@ -498,7 +498,7 @@ print_string: PRINT_STRING exp
 			// Create a new print_string node
 			$$ = new lp::PrintStmt($2);
 		}
-
+;
 
 read:  READ LPAREN VARIABLE RPAREN
 		{

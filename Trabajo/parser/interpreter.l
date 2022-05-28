@@ -65,6 +65,8 @@ CADENA	 "'"([^']|"\\\'")*"'"
 
 BIG_COMMENT 	<<([^(>>)])*>>
 
+ONE_LINE_COMMENT	#([^(\n)])*
+
 /* NEW in example 3 */
 /* STATE  */
 %x ERROR
@@ -206,7 +208,7 @@ BIG_COMMENT 	<<([^(>>)])*>>
 
 {BIG_COMMENT} {printf("Encontrado comentario de varias lineas\n") ;}	/*Añadido por nosotros*/
 
-
+{ONE_LINE_COMMENT} {printf("Encontrado comentario de una linea\n") ;}
 
 ^# { /* The interpreter finishes when the symbol # is written at the beginning of the line */
 	// std::cout << CLEAR_SCREEN; 
