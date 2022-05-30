@@ -59,7 +59,14 @@ LETTER [a-zA-Z]
 
 NUMBER {DIGIT}+(\.{DIGIT}+)?([Ee][+|-]?{DIGIT}+)?
 
-IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_")*
+IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_"({LETTER}|{DIGIT}))*
+
+ERRORIDa {IDENTIFIER}"_"
+ERRORIDb ({DIGIT}|"_"){IDENTIFIER}
+ERRORIDc {LETTER}({LETTER}|{DIGIT}|"__"({LETTER}|{DIGIT}))*
+
+ERRORDIGa 	"."{DIGIT}+
+ERRORDIGb 	{DIGIT}+"."
 
 CADENA	 "'"([^']|"\\\'")*"'"
 
@@ -209,6 +216,17 @@ ONE_LINE_COMMENT	#([^(\n)])*
 {BIG_COMMENT} {printf("Encontrado comentario de varias lineas\n") ;}	/*Añadido por nosotros*/
 
 {ONE_LINE_COMMENT} {printf("Encontrado comentario de una linea\n") ;}
+
+{ERRORIDa}			{printf("\nError at the identifier. Identifier can not end with a _.\n");}
+
+{ERRORIDb}			{printf("\nError at the identifier. Identifier must begin with a letter.\n");}
+
+{ERRORIDc}			{printf("\nError. Indetifier can not have two _ followed by.\n");}
+
+
+{ERRORDIGa}	{printf("\nExpected a number before .\n");}
+
+{ERRORDIGb}	{printf("\nExpected a number after .");}
 
 ^# { /* The interpreter finishes when the symbol # is written at the beginning of the line */
 	// std::cout << CLEAR_SCREEN; 
