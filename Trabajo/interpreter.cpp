@@ -108,11 +108,11 @@ int main(int argc, char *argv[])
  */
  if (argc == 2) 
  {
-    std::string extension = argv[1];
-    extension = extension.substr(extension.find("."));
-    if ( extension.compare(".e") ){
+    std::string fichero = argv[1];
+    
+    if ( fichero.substr(fichero.find_last_of(".") + 1) != "e"){
       std::cout << "La extensión del archivo es errónea, debe ser .e\n";
-      exit(1);
+      exit(-1);
     }
     
 
