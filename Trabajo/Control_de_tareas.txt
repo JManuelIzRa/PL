@@ -43,7 +43,7 @@ PALABRAS RESERVADAS:							[ ]
 		repetir				[x]
 		hasta					[x]
 
-	SENTENCIA DE BUCLE PARA:				[X] Jose
+	SENTENCIA DE BUCLE PARA:				[X]
 		para					[X]
 		desde					[X]
 		hasta					[X]
@@ -51,17 +51,17 @@ PALABRAS RESERVADAS:							[ ]
 		hacer					[X]
 		fin_para				[X]
 
-	SENTENCIA DE SELECCIÓN MÚLTIPLE:			[X] Jose
+	SENTENCIA DE SELECCIÓN MÚLTIPLE:			[X]
 		segun					[X]
 		valor					[X]
-		defecto				[X]		Descomentar linea 417 interpreter.y, comentada para poder seguir trabajando
+		defecto				[X]		
 		fin_segun				[X]
 
-	MACROS:						[ ]
+	MACROS:						[X]
 		borrar_pantalla			[X]
-		lugar					[ ] Jose
+		lugar					[X] Jose
 
-	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS		[ ] Creo q ya lo hace
+	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS		[X]
 	LAS PALABRAS RESERVADAS NO SON IDENTIFICADORES	[ ] Fran
 
 										CONTROL		FECHA
