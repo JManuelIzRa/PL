@@ -1536,34 +1536,19 @@ void lp::ReadStringStmt::evaluate()
 	// Check if the type of the variable is CADENA
 	if (var->getType() == CADENA)
 	{
-		if (value[0] == '\'')
-		{
-			if (value[value.length()-1] == '\'')
-			{
+	
+			
 				/* Get the identifier in the table of symbols as StringVariable */
 				lp::StringVariable *n = (lp::StringVariable *) table.getSymbol(this->_id);
 				/* Assignment the read value to the identifier */
 				n->setValue(value);
-			}
-			else
-			{
-				warning("Runtime error: Missing character","\' at the end");
-			}
-			
-		}
-		else
-		{
-			warning("Runtime error: Missing character","\' at the begining");
-		}
+		
 		
 	}
 	// The type of variable is not CADENA
 	else
 	{
-		if (value[0] == '\'')
-		{
-			if (value[value.length()-1] == '\'')
-			{
+		
 				// Delete $1 from the table of symbols as Variable
 				table.eraseSymbol(this->_id);
 
@@ -1573,17 +1558,6 @@ void lp::ReadStringStmt::evaluate()
 									  VARIABLE,CADENA,value);
 
 				table.installSymbol(n);
-			}
-			else
-			{
-				warning("Runtime error: Missing character","\' at the end");
-			}
-			
-		}
-		else
-		{
-			warning("Runtime error: Missing character","\' at the begining");
-		}
 	}
 
 }

@@ -61,6 +61,8 @@ NUMBER {DIGIT}+(\.{DIGIT}+)?([Ee][+|-]?{DIGIT}+)?
 
 IDENTIFIER  {LETTER}({LETTER}|{DIGIT}|"_"({LETTER}|{DIGIT}))*
 
+SYMBOL "@"|"$"
+
 ERRORIDa {IDENTIFIER}"_"
 ERRORIDb ({DIGIT}|"_"){IDENTIFIER}
 ERRORIDc {LETTER}({LETTER}|{DIGIT}|"__"({LETTER}|{DIGIT}))*
@@ -73,6 +75,7 @@ CADENA	 "'"([^']|"\\\'")*"'"
 BIG_COMMENT 	<<([^(>>)])*>>
 
 ONE_LINE_COMMENT	#([^(\n)])*
+
 
 /* NEW in example 3 */
 /* STATE  */
@@ -227,6 +230,12 @@ ONE_LINE_COMMENT	#([^(\n)])*
 {ERRORDIGa}	{printf("\nExpected a number before .\n");}
 
 {ERRORDIGb}	{printf("\nExpected a number after .");}
+
+{SYMBOL}{IDENTIFIER}	{printf("\nError at the identifier. Identifiers do not allow that symbol: %s\n", yytext);}
+
+{IDENTIFIER}{SYMBOL}	{printf("\nError at the identifier. Identifiers do not allow that symbol: %s\n", yytext);}
+
+{SYMBOL}				{printf("\nError. Symbol not allowed.\n");}
 
 ^# { /* The interpreter finishes when the symbol # is written at the beginning of the line */
 	// std::cout << CLEAR_SCREEN; 

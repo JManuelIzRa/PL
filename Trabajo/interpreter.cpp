@@ -109,14 +109,24 @@ int main(int argc, char *argv[])
  if (argc == 2) 
  {
     std::string fichero = argv[1];
+    FILE* file;
     
     if ( fichero.substr(fichero.find_last_of(".") + 1) != "e"){
       std::cout << "La extensión del archivo es errónea, debe ser .e\n";
       exit(-1);
     }
     
-
-     yyin = fopen(argv[1],"r");
+    if ( (file = fopen(argv[1],"r") ) ) 
+    {
+        fclose(file);
+        yyin = fopen(argv[1],"r");
+    }
+    else
+    {
+        std::cout << "Runtime error. File doesn't exist\n";
+        exit(-1);
+    }
+     
 
 	 interactiveMode = false;
  }

@@ -8,12 +8,12 @@
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-NO EXISTEN CONFLICTOS EN LAS REGLAS DE PRODUCCIÓN:		[ ]
+NO EXISTEN CONFLICTOS EN LAS REGLAS DE PRODUCCIÓN:		[X]
 -------------------------------------------------------------------------------------
 
 									CONTROL		FECHA
 -------------------------------------------------------------------------------------
-PALABRAS RESERVADAS:							[ ]	
+PALABRAS RESERVADAS:							[X]	
 --------------------------------------------------------------------------------------
 	o 							[x]
 	y							[x]
@@ -59,35 +59,35 @@ PALABRAS RESERVADAS:							[ ]
 
 	MACROS:						[X]
 		borrar_pantalla			[X]
-		lugar					[X] Jose
+		lugar					[X] 
 
 	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS		[X]
-	LAS PALABRAS RESERVADAS NO SON IDENTIFICADORES	[ ] Fran
+	LAS PALABRAS RESERVADAS NO SON IDENTIFICADORES	[X]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-IDENTIFICADORES:								[ ]					
+IDENTIFICADORES:								[X]					
 -------------------------------------------------------------------------------------
 	COMPUESTOS POR LETRAS, DIGITOS Y SUBRAYADOS 		[x]
-	COMIENZA POR UNA LETRA					[ ] Creo q ya lo hace
-	NO TERMINAN  EN SUBRAYADA				[ ] Jose
-	NO CONTIENEN DOS SUBRAYADOS SEGUIDOS			[ ] Jose
-
+	COMIENZA POR UNA LETRA					[X] 
+	NO TERMINAN  EN SUBRAYADA				[X] 
+	NO CONTIENEN DOS SUBRAYADOS SEGUIDOS			[X] 
+	
 	NO SE DISTINGUE ENTRE MAYÚSCULAS Y MINÚSCULAS		[x]
 
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------NÚMERO:									[ ]	
 -------------------------------------------------------------------------------------
-	ENTEROS 						[X] Fran
-	REALES DE PUNTO FIJO					[X] Fran
-	REALES NOTACION CIENTÍFICA				[X] Fran
+	ENTEROS 						[X] 
+	REALES DE PUNTO FIJO					[X] 
+	REALES NOTACION CIENTÍFICA				[X] 
 
-	TODOS SON TRATADOS COMO NÚMERO			[X] Fran
+	TODOS SON TRATADOS COMO NÚMERO			[X] 
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-CADENA:									[ ]		
+CADENA:									[X]		
 -------------------------------------------------------------------------------------
 	CARACTERES DELIMITADOS POR COMILLAS SIMPLES 		[x]
 	INCLUYE COMILLA SIMPLE CON  \'			[X]
@@ -97,9 +97,9 @@ CADENA:									[ ]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-OPERADORES:									[ ]					
+OPERADORES:									[X]					
 -------------------------------------------------------------------------------------
-	NUMERICOS							[ ] Revisar cuales faltan y añadir, Jose
+	NUMERICOS							[X] 
 		ASIGNACION :=					[X] 
 		SUMA +						[X]
 			UNARIO +2				[X]
@@ -124,24 +124,24 @@ OPERADORES:									[ ]
 		DISTINTO DE <>					[X]
 		IGUALDAD ==						[X]
 
-	LOGICOS							[ ] Revisar si estan todos, creo q si, Jose
-		DISYUNCIÓN o					[ ]
-		CONJUNCIÓN y					[ ]
-		NEGACIÓN   no					[ ]
+	LOGICOS							[X] 
+		DISYUNCIÓN o					[X]
+		CONJUNCIÓN y					[X]
+		NEGACIÓN   no					[X]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-OTROS:									[ ]								
+OTROS:									[X]								
 -------------------------------------------------------------------------------------
 	COMENTARIOS							[X]
 		VARIAS LINEAS: DELIMITADORES << ... >> 		[X]
 		UNA LÍNEA: DELIMITADOR #		   		[X] 
 
-	FIN DE LINEA ;							[] El SEMICOLON yo diria q lo coge ya sin problema
+	FIN DE LINEA ;							[X]
 
 									CONTROL		FECHA
 -------------------------------------------------------------------------------------
-SENTENCIAS DE CONTROL:							[ ]						
+SENTENCIAS DE CONTROL:							[X]						
 -------------------------------------------------------------------------------------
 	ASIGNACION						[X]
 		IDENTIFICADOR := EXPR NUMÉRICA	[X]
@@ -167,17 +167,17 @@ SENTENCIAS DE CONTROL:							[ ]
 				si_no lista de sentencias
 			fin_si
 
-		BUCLE "mientras"				[ ] No lo recuerto
+		BUCLE "mientras"				[X] 
 			mientras condición hacer
 					lista de sentencias
 			fin_mientras
 
-		BUCLE "repetir"				[x] Esta donete creo
+		BUCLE "repetir"				[x]
 			repetir
 				lista de sentencias
 			hasta condición
 
-		BUCLE "para"					[ ] Asignado arriba
+		BUCLE "para"					[X]
 			para identificador
 				desde expresión numérica 1
 				hasta expresión numérica 2
@@ -186,7 +186,7 @@ SENTENCIAS DE CONTROL:							[ ]
 					lista de sentencias
 			fin_para
 
-		SELECCIÓN MÚLTIPLE				[ ] Asignado arriba
+		SELECCIÓN MÚLTIPLE				[X] 
 		segun (expresión)
 			valor v1:   … 
 			valor v2:   … 
@@ -196,10 +196,10 @@ SENTENCIAS DE CONTROL:							[ ]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-COMANDOS ESPECIALES:								[ ] Asignados arriba
+COMANDOS ESPECIALES:								[X] 
 --------------------------------------------------------------------------------------
 	borrar_pantalla							[X]
-	lugar(expresión numérica 1, expresión numérica 2)	[ ]
+	lugar(expresión numérica 1, expresión numérica 2)	[X]
 
 
 										CONTROL		FECHA
@@ -213,15 +213,15 @@ OBSERVACIONES:									[X]
 -------------------------------------------------------------------------------------
 CONTROL DE ERRORES:								[ ]	
 -------------------------------------------------------------------------------------
-LÉXICOS								[ ] Jose
-	IDENTIFICADOR MAL ESCRITO 				[ ]
-	NÚMERO MAL ESCRITO 					[ ]
-	SIMBOLO NO PERMITIDO					[ ]
+LÉXICOS								[X] 
+	IDENTIFICADOR MAL ESCRITO 				[X]
+	NÚMERO MAL ESCRITO 					[X]
+	SIMBOLO NO PERMITIDO					[X]
 	OTROS							[ ]
 
-SINTÁCTICOS								[ ] Fran
-	SENTENCIA DE CONTROL MAL ESCRITA	    		[ ]
-	SENTENCIA CON ARGUMENTOS INCOMPATIBLES 		[ ]
+SINTÁCTICOS								[ ] 
+	SENTENCIA DE CONTROL MAL ESCRITA	    		[X]
+	SENTENCIA CON ARGUMENTOS INCOMPATIBLES 		[X]
 	OTROS						    	[ ]
 
 SEMÁNTICOS								[ ] Fran
@@ -229,33 +229,22 @@ SEMÁNTICOS								[ ] Fran
 
 DE EJECUCIÓN							[ ]
 	SENTENCIA "PARA" CON BUCLE INFINITO			[X] 
-	FICHERO INEXISTENTE					[ ] Jose
+	FICHERO INEXISTENTE					[X] 
 	FICHERO CON EXTENSIÓN INCORRECTA			[X]
 	OTROS							[ ] Fran
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-MODOS DE EJECUCIÓN:								[ ] Jose
+MODOS DE EJECUCIÓN:								[X] 
 -----------------------------------------------------------------------------------
-	INTERACTIVO						[ ] 
-	DESDE FICHERO						[ ]
+	INTERACTIVO						[X] 
+	DESDE FICHERO						[X]
 
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
-OPCIONALES:									[ ] Los dos si nos da tiempo
+OPCIONALES:									[ ]
 -------------------------------------------------------------------------------------
 	OPERADORES UNARIOS (++, --, etc)			[ ]
 	OPERADIRES ARITMETICOS Y ASIGNACION (+:=,-:=)	[ ]
-	OTROS:							[ ]
-
-
-	LEER_CADENA LANZA ERRORES CUANDO LA CADENA ESTÁ MAL INTRODUCIDA, EJEMPLOS:
-		'hola
-		hola'
-		hola
-		989
-
-		Correcto:
-		'hola'
-		'989'
+	OTROS:							[ 
