@@ -73,37 +73,38 @@ extern int yydebug;
     COLON = 279,
     END_CASES = 280,
     ERASE_SCREEN = 281,
-    LETFCURLYBRACKET = 282,
-    RIGHTCURLYBRACKET = 283,
-    ASSIGNMENT = 284,
-    COMMA = 285,
-    NUMBER = 286,
-    BOOL = 287,
-    CADENA = 288,
-    VARIABLE = 289,
-    UNDEFINED = 290,
-    CONSTANT = 291,
-    BUILTIN = 292,
-    OR = 293,
-    AND = 294,
-    GREATER_OR_EQUAL = 295,
-    LESS_OR_EQUAL = 296,
-    GREATER_THAN = 297,
-    LESS_THAN = 298,
-    EQUAL = 299,
-    NOT_EQUAL = 300,
-    NOT = 301,
-    PLUS = 302,
-    MINUS = 303,
-    MULTIPLICATION = 304,
-    DIVISION = 305,
-    MODULO = 306,
-    INTEGER_DIV = 307,
-    CONCAT = 308,
-    LPAREN = 309,
-    RPAREN = 310,
-    UNARY = 311,
-    POWER = 312
+    PLACE = 282,
+    LETFCURLYBRACKET = 283,
+    RIGHTCURLYBRACKET = 284,
+    ASSIGNMENT = 285,
+    COMMA = 286,
+    NUMBER = 287,
+    BOOL = 288,
+    CADENA = 289,
+    VARIABLE = 290,
+    UNDEFINED = 291,
+    CONSTANT = 292,
+    BUILTIN = 293,
+    OR = 294,
+    AND = 295,
+    GREATER_OR_EQUAL = 296,
+    LESS_OR_EQUAL = 297,
+    GREATER_THAN = 298,
+    LESS_THAN = 299,
+    EQUAL = 300,
+    NOT_EQUAL = 301,
+    NOT = 302,
+    PLUS = 303,
+    MINUS = 304,
+    MULTIPLICATION = 305,
+    DIVISION = 306,
+    MODULO = 307,
+    INTEGER_DIV = 308,
+    CONCAT = 309,
+    LPAREN = 310,
+    RPAREN = 311,
+    UNARY = 312,
+    POWER = 313
   };
 #endif
 
@@ -124,7 +125,7 @@ union YYSTYPE
   lp::AST *prog;					 /* NEW in example 16 */
   lp::CasesStmt *casos;
 
-#line 128 "interpreter.tab.h"
+#line 129 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

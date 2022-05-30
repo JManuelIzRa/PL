@@ -1887,6 +1887,17 @@ void lp::SwitchStmt::evaluate()
 }
 
 
+
+void lp::PlaceStmt::print()
+{
+  std::cout << "LugarStmt "  << std::endl;
+}
+
+void lp::PlaceStmt::evaluate()
+{
+	PLACE((int)this->_exp1->evaluateNumber()+1, (int)this->_exp2->evaluateNumber());
+
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Añadido por nosotros

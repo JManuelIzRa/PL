@@ -92,6 +92,7 @@ static struct {
 						{"defecto", DEFAULT},
 						{"fin_segun", END_CASES},
 						{"borrar_pantalla", ERASE_SCREEN},
+						{"lugar",PLACE},
 						{"//", INTEGER_DIV},
 						//Nuevas palabras reservadas
 						{"o",OR},

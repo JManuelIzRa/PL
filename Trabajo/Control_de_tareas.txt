@@ -51,11 +51,11 @@ PALABRAS RESERVADAS:							[ ]
 		hacer					[X]
 		fin_para				[X]
 
-	SENTENCIA DE SELECCIÓN MÚLTIPLE:			[ ] Fran
-		segun					[ ]
-		valor					[ ]
-		defecto				[ ]		Descomentar linea 417 interpreter.y, comentada para poder seguir trabajando
-		fin_segun				[ ]
+	SENTENCIA DE SELECCIÓN MÚLTIPLE:			[X] Jose
+		segun					[X]
+		valor					[X]
+		defecto				[X]		Descomentar linea 417 interpreter.y, comentada para poder seguir trabajando
+		fin_segun				[X]
 
 	MACROS:						[ ]
 		borrar_pantalla			[X]

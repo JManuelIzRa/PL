@@ -162,7 +162,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repeat for cases erase_screen
+%type <st> stmt asgn print read if while block print_string repeat for cases erase_screen place
 
 %type <prog> program
 
@@ -180,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE CASES VALUE DEFAULT COLON END_CASES ERASE_SCREEN
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE CASES VALUE DEFAULT COLON END_CASES ERASE_SCREEN PLACE
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -349,6 +349,10 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 
 	  }
 	| erase_screen SEMICOLON
+	{
+
+	}
+	| place SEMICOLON
 	{
 
 	}
@@ -713,6 +717,13 @@ exp:	NUMBER
 erase_screen:   ERASE_SCREEN controlSymbol
   {
     $$ = new lp::EraseScreenStmt();
+    control--;
+  }
+;
+
+place:  PLACE controlSymbol LPAREN exp COMMA exp RPAREN
+  {
+    $$ = new lp::PlaceStmt($4, $6);
     control--;
   }
 ;

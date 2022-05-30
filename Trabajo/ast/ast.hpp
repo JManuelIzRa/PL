@@ -2111,6 +2111,47 @@ class EraseScreenStmt : public Statement
 };
 
 
+/*!	
+  \class   PlaceStmt
+  \brief   Definition of atributes and methods of PlaceStmt class
+  \note    PlaceStmt Class publicly inherits from Statement class 
+		   and adds its own print and evaluate functions
+*/
+class PlaceStmt : public Statement
+{
+private:
+  ExpNode* _exp1;
+  ExpNode* _exp2;
+  // No attributes
+
+  public:
+/*!
+	\brief Constructor of  PlaceStmt
+	\post  A new EmptyStmt is created
+*/
+  PlaceStmt(ExpNode* exp1, ExpNode *exp2)
+	{
+    this->_exp1= exp1;
+    this->_exp2=exp2;
+		// Empty
+	}
+
+
+/*!
+	\brief   Print the EmptyStmt
+	\return  void
+	\sa		 evaluate()
+*/
+  void print();
+
+/*!
+	\brief   Evaluate the EmptyStmt
+	\return  void
+	\sa		 print
+*/
+  void evaluate();
+};
+
 //Incluido por nosotros
 
 /*!	
