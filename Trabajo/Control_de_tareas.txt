@@ -259,12 +259,3 @@ OPCIONALES:									[ ] Los dos si nos da tiempo
 		Correcto:
 		'hola'
 		'989'
-
-		segun(dato)
-valor 1:
-escribir_cadena('fffff');
-valor 2:
-escribir_cadena('fadsadf');
-defecto:
-escribir_cadena('adfadf');
-fin_segun;
