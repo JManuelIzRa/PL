@@ -162,12 +162,12 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repeat for casos erase_screen default
+%type <st> stmt asgn print read if while block print_string repeat for cases erase_screen
 
 %type <prog> program
 
 // Añadido por nosotros
-%type <casos> values
+%type <casos> value
 
 /* Defined tokens */
 
@@ -180,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE CASOS VALUE DEFAULT END_CASOS COLON ERASE_SCREEN
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE CASES VALUE DEFAULT COLON END_CASES ERASE_SCREEN
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -344,7 +344,7 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 	  {
 
 	  }
-	| casos SEMICOLON
+	| cases SEMICOLON
 	  {
 
 	  }
@@ -432,44 +432,27 @@ for:
 ;
 
 /* AÑADIDO POR NOSOTROS */
-casos:
-	CASOS controlSymbol LPAREN exp RPAREN values END_CASOS
-	{
-		$$ = new lp::CasesStmt($4,$6);
-		control--;
-	}
-	| CASOS controlSymbol LPAREN exp RPAREN values default END_CASOS
-	{
-		$$ = new lp::CasesStmt($4, $6, $7);
-		control--;
-	}
+cases:
+      CASES controlSymbol exp value END_CASES
+      {
+        $$ = new lp::SwitchStmt($3,$4);
+        control --;
+      }
+
 ;
+value: VALUE controlSymbol exp COLON stmtlist value
+  		{
 
+  			$$ = new lp::CasesStmt($3,$5,$6);
+  			control--;
 
-values: VALUE NUMBER COLON stmtlist
-	{
-		// Create a new CaseNode with a NumberNode as expression
-		lp::ExpNode* expression = new lp::NumberNode($2);
-		$$ = new lp::CaseNode(expression, $4);
-	}
-	| VALUE CONSTANT COLON stmtlist
-	{
-		// Create a new CaseNode with a ConstantNode as expression
-		lp::ExpNode* expression = new lp::ConstantNode($2);
-		$$ = new lp::CaseNode(expression, $4);
-	}
-	| VALUE CADENA COLON stmtlist
-	{
-		// Create a new CaseNode with a TextNode as expression
-		lp::ExpNode* expression = new lp::TextNode($2);
-		$$ = new lp::CaseNode(expression, $4);
-	}
-;
+  		}
+  		|DEFAULT controlSymbol COLON stmtlist
+  		{
+  		  $$ = new lp::CasesStmt($4);
+  			control--;
 
-default: DEFAULT COLON stmtlist
-	{
-		$$ = new lp::DefaultCaseNode($3);
-	}
+  		}
 ;
 
 

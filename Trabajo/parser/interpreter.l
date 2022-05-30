@@ -174,7 +174,7 @@ ONE_LINE_COMMENT	#([^(\n)])*
 "("     { return LPAREN; } 			/* NEW in example 3 */
 ")"	    { return RPAREN; } 			/* NEW in example 3 */
 
-
+":" 	{return COLON; }
 
 "%"     { return MODULO; }			/* NEW in example 5 */
 

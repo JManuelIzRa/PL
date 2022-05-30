@@ -1819,140 +1819,72 @@ void lp::ForStmt::evaluate()
 ///////////////////////////////////////////
 // Añadido por nosotros
 
-int lp::CaseNode::getType()
-{
-	return this->_exp->getType();
-}
-
-void lp::CaseNode::print()
-{
-	std::list<Statement*>::iterator stmtIter;
-	std::cout << "Case: " << std::endl;
-	// Condition
-	std::cout << "\t";
-	// Body of the while loop
-	std::cout << "\t";
-	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-	{
-		(*stmtIter)->print();
-	}
-
-	std::cout << std::endl;
-}
-
-void lp::CaseNode::evaluate()
-{
-	std::list<Statement*>::iterator stmtIter;
-
-	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-	{
-		(*stmtIter)->evaluate();
-	}
-}
-
-
-void lp::DefaultCaseNode::print()
-{
-	std::list<Statement*>::iterator stmtIter;
-	std::cout << "DefaultCase: " << std::endl;
-	// Condition
-	std::cout << "\t";
-	// Body of the while loop
-	std::cout << "\t";
-	
-	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-	{
-		(*stmtIter)->print();
-	}
-
-	std::cout << std::endl;
-}
-
-void lp::DefaultCaseNode::evaluate()
-{
-	std::list<Statement*>::iterator stmtIter;
-	
-	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-	{
-		(*stmtIter)->evaluate();
-	}
-}
-
-
-
 void lp::CasesStmt::print()
 {
-	std::list<CaseNode*>::iterator caseIter;
-	std::cout << "CasesStmt: " << std::endl;
-	std::cout << "\t";
-	//Expression
-	this->_exp->print();
-	// Body of the cases statement
-	std::cout << "\t";
+  std::cout << "CaseStmt: "  << std::endl;
+  // Condition
+  std::cout << "\t";
 
-	for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++)
-	{
-		(*caseIter)->print();
-	}
 
-	if (this->_defaultCase != NULL)
-	{
-		this->_defaultCase->print();
-	}
-
-	std::cout << std::endl;
+  std::cout << std::endl;
 }
 
-void lp::CasesStmt::evaluate()
+
+void lp::CasesStmt::evaluate(double valor)
 {
-	int type = this->_exp->getType();
-	std::list<CaseNode*>::iterator caseIter;
-	bool enteredCase = false;
+	//VALUE
+	if(this->_type == 0){
+		if(this->_exp->evaluateNumber() == valor){
 
-	for (caseIter = this->_cases->begin(); caseIter != this->_cases->end() && !enteredCase; caseIter++)
-	{
-		if ((*caseIter)->getType() == type) {
-			switch(type)
+			std::list<Statement *>::iterator stmtIter;
+
+			for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
 			{
-				case NUMBER: {
-					if ((*caseIter)->getExp()->evaluateNumber() == this->_exp->evaluateNumber()) {
-						(*caseIter)->evaluate();
-						enteredCase = true;
-					}
-				}
-				break;
+				(*stmtIter)->evaluate();
 
-				case BOOL: {
-					if ((*caseIter)->getExp()->evaluateBool() == this->_exp->evaluateBool()) {
-						(*caseIter)->evaluate();
-						enteredCase = true;
-					}
-				}
-				break;
-
-				case STRING: {
-					if ((*caseIter)->getExp()->evaluateString() == this->_exp->evaluateString()) {
-						(*caseIter)->evaluate();
-						enteredCase = true;
-					}
-				}
-				break;
-
-				default:
-					warning("Runtime error: incompatible types for ", "valor");
-				}
 			}
-		else {
-			warning("Runtime error: incompatible types for ", "valor");
 		}
+		else
+	  		this->_valores->evaluate(valor);
+
 	}
 
-	if (!enteredCase && this->_defaultCase != NULL)
-	{
-		this->_defaultCase->evaluate();
+
+	//DEFECT
+	if(this->_type == 1){
+		std::list<Statement *>::iterator stmtIter;
+
+	  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	  {
+	     (*stmtIter)->evaluate();
+
+	  }
 	}
+
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+void lp::SwitchStmt::print()
+{
+  std::cout << "SwitchStmt: "  << std::endl;
+  // Condition
+  std::cout << "\t";
+
+
+  this->_exp->print();
+
+  std::cout << std::endl;
+}
+
+
+void lp::SwitchStmt::evaluate()
+{
+  // While the condition is true. the body is run
+
+	 this->_valores->evaluate(this->_exp->evaluateNumber());
+
+
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
