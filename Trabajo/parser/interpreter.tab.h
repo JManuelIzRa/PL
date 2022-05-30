@@ -67,10 +67,10 @@ extern int yydebug;
     STEP = 273,
     DO = 274,
     END_WHILE = 275,
-    SWITCH = 276,
+    CASOS = 276,
     VALUE = 277,
     DEFAULT = 278,
-    END_SWITCH = 279,
+    END_CASOS = 279,
     COLON = 280,
     ERASE_SCREEN = 281,
     LETFCURLYBRACKET = 282,
@@ -122,7 +122,7 @@ union YYSTYPE
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
-  lp::SwitchStmt *switchOur;
+  lp::CasesStmt *casos;
 
 #line 128 "interpreter.tab.h"
 

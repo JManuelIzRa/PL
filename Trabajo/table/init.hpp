@@ -87,10 +87,10 @@ static struct {
 						{"desde", FROM},
 						{"paso", STEP},
 						{"fin_para",END_FOR},
-						{"segun", SWITCH},
+						{"segun", CASOS},
 						{"valor", VALUE},
 						{"defecto", DEFAULT},
-						{"fin_segun", END_SWITCH},
+						{"fin_segun", END_CASOS},
 						{"borrar_pantalla", ERASE_SCREEN},
 						{"//", INTEGER_DIV},
 						//Nuevas palabras reservadas

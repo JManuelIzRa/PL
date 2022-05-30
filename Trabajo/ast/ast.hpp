@@ -1787,6 +1787,29 @@ class WhileStmt : public Statement
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+//Añadido por nosotros
+class RepetirStmt : public Statement
+{
+	private:
+		ExpNode *_cond;
+		std::list <Statement *> *_stmt;
+
+	public:
+		RepetirStmt(std::list <Statement *> *statement, ExpNode *condition)
+		{
+			this->_cond = condition;
+			this->_stmt = statement;
+		}
+
+		void print();
+
+		void evaluate();
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 class ForStmt : public Statement
 {
@@ -1933,107 +1956,141 @@ class AST {
   void evaluate();
 };
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 //Incluido por nosotros
 
-/*!	
-  \class   RepetirStmt
-  \brief   Definition of atributes and methods of RepetirStmt class
-  \note    RepetirStmt Class publicly inherits from Statement class 
-		   and adds its own print and evaluate functions
+/*!
+	\class CaseNode
+	\brief Definition of atributes and methods of CaseNode class
 */
-
-class RepetirStmt : public Statement
+class CaseNode
 {
- private:
-  ExpNode *_cond;				  //!< Condition
-  std::list <Statement *> *_stmt; //!< List of statements
+	private:
+		lp::ExpNode* _exp;
+		std::list<Statement*> *_stmts;
+	
+	public:
+		/*!
+			\brief Constructor of CaseNode
+			\param expression: lp::ExpNode*
+			\param statements: std::list<Statement*>*
+			\post A new CaseNode is created with the name of the parameter
+			\note Inline function
+		*/
+		CaseNode(lp::ExpNode* expression, std::list<Statement*> *statements):_stmts(statements)
+		{
+			this->_exp = expression;
+		}
 
-  public:
+		/*!
+			\brief Type of the Case
+			\return int
+			\sa print
+		*/
+		int getType();
 
-	/*!		
-	\brief Constructor of RepetirStmt 
-	\param stmtList: pointer to a list of pointers to Statement
-	\param condition: pointer to a ExpNode variable
-	\post  A new RepetirStmt is created with the parameter
-	*/
-  RepetirStmt(std::list <Statement *> *stmtList, ExpNode *condition)
-	{
-		this->_cond = condition;
-		this->_stmt = stmtList;
-	}
+		/*!
+			\brief Returns the expression of the case
+			\return lp::ExpNode*
+			\note Inline function
+		*/
+		lp::ExpNode* getExp()
+		{
+			return this->_exp;
+		}
 
+		/*!
+			\brief Print the Case
+			\return void
+			\sa evaluate()
+		*/
+		void print();
 
-  void print();
-
-
-  void evaluate();
+		/*!
+			\brief Evaluate the Case's statements
+			\return double
+			\sa print
+		*/
+		void evaluate();
 };
 
 
-//Incluido por nosotros
-
-/*!	
-  \class   SwitchStmt
-  \brief   Definition of atributes and methods of SwitchStmt class
-  \note    SwitchStmt Class publicly inherits from Statement class 
-		   and adds its own print and evaluate functions
+/*!
+	\class DefaultCaseNode
+	\brief Definition of atributes and methods of DefaultCaseNode class
 */
-class SwitchStmt : public Statement
+class DefaultCaseNode
 {
 	private:
-		ExpNode *_exp;
-		std::list <Statement *> *_stmts;
-		SwitchStmt *_valores;
-		int _type;
-		//!< Statement of the body of the while loop
+		std::list<Statement*> *_stmts;
+	
+	public:
+		/*!
+			\brief Constructor of DefaultCaseNode
+			\param value: double
+			\post A new DefaultCaseNode is created with the name of the parameter
+			\note Inline function
+		*/
+		DefaultCaseNode(std::list<Statement*> *statements): _stmts(statements) {}
 
+		/*!
+			\brief Print the Case
+			\return void
+			\sa evaluate()
+		*/
+		void print();
+
+		/*!
+			\brief Evaluate the Case's statements
+			\return double
+			\sa print
+		*/
+	void evaluate();
+};
+
+
+/*!
+	\class CasesStmt
+	\brief Definition of atributes and methods of CasesStmt class
+	\note CasesStmt Class publicly inherits from Statement class and adds its own print and evaluate functions
+*/
+class CasesStmt: public Statement
+{
+	private:
+		lp::ExpNode* _exp;
+		std::list<CaseNode*> *_cases;
+		DefaultCaseNode* _defaultCase;
 
 	public:
 	/*!
-	\brief Constructor of SwitchStmt
-	\param condition: ExpNode of the condition
-	\param statement: Statement of the body of the loop
-	\post  A new SwitchStmt is created with the parameters
+		\brief Constructor of CasesStmt
+		\post A new CasesStmt is created with the parameters
 	*/
-	SwitchStmt(ExpNode * exp, std::list<Statement *> *stmts, SwitchStmt *valores)
+	CasesStmt (ExpNode* expression, std::list<CaseNode*> *cases, DefaultCaseNode* defaultCase=NULL): _cases(cases)
 	{
-	this->_exp = exp;
-	this->_stmts = stmts;
-	this->_valores = valores;
-	_type = 0;
-
-
+		this->_exp = expression;
+		this->_defaultCase = defaultCase;
 	}
-	SwitchStmt(std::list<Statement *> *stmts)
-	{
-	this->_stmts = stmts;
-	_type = 1;
-
-	}
-
 	/*!
-	\brief   Print the SwitchStmt
-	\return  void
-	\sa		 evaluate
+		\brief Print the CasesStmt
+		\return void
+		\sa evaluate
 	*/
 	void print();
 
 	/*!
-	\brief   Evaluate the SwitchStmt
-	\return  void
-	\sa		 print
+		\brief Evaluate the CasesStmt
+		\return void
+		\sa print
 	*/
-	void evaluate(double valor);
-
-	void evaluate(){}
-
-	double getValor(){
-		return this->_exp->evaluateNumber();
-	}
+	void evaluate();
 };
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 //Incluido por nosotros
 
 /*!	

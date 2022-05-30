@@ -111,6 +111,14 @@ int main(int argc, char *argv[])
  */
  if (argc == 2) 
  {
+    std::string extension = argv[1];
+    extension = extension.substr(extension.find("."));
+    if ( extension.compare(".e") ){
+      std::cout << "La extensión del archivo es errónea, debe ser .e\n";
+      exit(1);
+    }
+    
+
      yyin = fopen(argv[1],"r");
 
 	 interactiveMode = false;

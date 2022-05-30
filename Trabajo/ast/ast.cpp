@@ -1819,48 +1819,140 @@ void lp::ForStmt::evaluate()
 ///////////////////////////////////////////
 // Añadido por nosotros
 
-void lp::SwitchStmt::print()
+int lp::CaseNode::getType()
 {
-  std::cout << "SwitchStmt: "  << std::endl;
-  // Condition
-  std::cout << "\t";
+	return this->_exp->getType();
+}
 
-  std::cout << std::endl;
+void lp::CaseNode::print()
+{
+	std::list<Statement*>::iterator stmtIter;
+	std::cout << "Case: " << std::endl;
+	// Condition
+	std::cout << "\t";
+	// Body of the while loop
+	std::cout << "\t";
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	{
+		(*stmtIter)->print();
+	}
+
+	std::cout << std::endl;
+}
+
+void lp::CaseNode::evaluate()
+{
+	std::list<Statement*>::iterator stmtIter;
+
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	{
+		(*stmtIter)->evaluate();
+	}
 }
 
 
-void lp::SwitchStmt::evaluate(double valor)
+void lp::DefaultCaseNode::print()
 {
-	//VALUE
-	if(this->_type == 0){
-		if(this->_exp->evaluateNumber() == valor){
+	std::list<Statement*>::iterator stmtIter;
+	std::cout << "DefaultCase: " << std::endl;
+	// Condition
+	std::cout << "\t";
+	// Body of the while loop
+	std::cout << "\t";
+	
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	{
+		(*stmtIter)->print();
+	}
 
-			std::list<Statement *>::iterator stmtIter;
+	std::cout << std::endl;
+}
 
-			for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+void lp::DefaultCaseNode::evaluate()
+{
+	std::list<Statement*>::iterator stmtIter;
+	
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	{
+		(*stmtIter)->evaluate();
+	}
+}
+
+
+
+void lp::CasesStmt::print()
+{
+	std::list<CaseNode*>::iterator caseIter;
+	std::cout << "CasesStmt: " << std::endl;
+	std::cout << "\t";
+	//Expression
+	this->_exp->print();
+	// Body of the cases statement
+	std::cout << "\t";
+
+	for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++)
+	{
+		(*caseIter)->print();
+	}
+
+	if (this->_defaultCase != NULL)
+	{
+		this->_defaultCase->print();
+	}
+
+	std::cout << std::endl;
+}
+
+void lp::CasesStmt::evaluate()
+{
+	int type = this->_exp->getType();
+	std::list<CaseNode*>::iterator caseIter;
+	bool enteredCase = false;
+
+	for (caseIter = this->_cases->begin(); caseIter != this->_cases->end() && !enteredCase; caseIter++)
+	{
+		if ((*caseIter)->getType() == type) {
+			switch(type)
 			{
-				(*stmtIter)->evaluate();
+				case NUMBER: {
+					if ((*caseIter)->getExp()->evaluateNumber() == this->_exp->evaluateNumber()) {
+						(*caseIter)->evaluate();
+						enteredCase = true;
+					}
+				}
+				break;
 
+				case BOOL: {
+					if ((*caseIter)->getExp()->evaluateBool() == this->_exp->evaluateBool()) {
+						(*caseIter)->evaluate();
+						enteredCase = true;
+					}
+				}
+				break;
+
+				case STRING: {
+					if ((*caseIter)->getExp()->evaluateString() == this->_exp->evaluateString()) {
+						(*caseIter)->evaluate();
+						enteredCase = true;
+					}
+				}
+				break;
+
+				default:
+					warning("Runtime error: incompatible types for ", "valor");
+				}
 			}
+		else {
+			warning("Runtime error: incompatible types for ", "valor");
 		}
-		else
-	  		this->_valores->evaluate(valor);
-
 	}
 
-
-	//DEFECT
-	if(this->_type == 1){
-		std::list<Statement *>::iterator stmtIter;
-
-	  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
-	  {
-	     (*stmtIter)->evaluate();
-
-	  }
+	if (!enteredCase && this->_defaultCase != NULL)
+	{
+		this->_defaultCase->evaluate();
 	}
-
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
