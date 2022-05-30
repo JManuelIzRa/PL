@@ -149,7 +149,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
-  lp::SwitchStmt *switchOur;
+  lp::CasesStmt *casos;
 }
 
 /* Type of the non-terminal symbols */
@@ -162,12 +162,12 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block print_string repeat for switch erase_screen
+%type <st> stmt asgn print read if while block print_string repeat for casos erase_screen default
 
 %type <prog> program
 
 // Añadido por nosotros
-%type <switchOur> values
+%type <casos> values
 
 /* Defined tokens */
 
@@ -180,7 +180,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE SWITCH VALUE DEFAULT END_SWITCH COLON ERASE_SCREEN
+%token PRINT PRINT_STRING READ READ_STRING IF THEN END_IF ELSE WHILE REPEAT UNTIL FOR END_FOR FROM STEP DO END_WHILE CASOS VALUE DEFAULT END_CASOS COLON ERASE_SCREEN
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -344,7 +344,7 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 	  {
 
 	  }
-	| switch SEMICOLON
+	| casos SEMICOLON
 	  {
 
 	  }
@@ -418,16 +418,6 @@ cond: 	LPAREN exp RPAREN
 		}
 ;
 
-/* AÑADIDO POR NOSOTROS */
-switch:
-      SWITCH controlSymbol exp values END_SWITCH
-      {
-       /* $$ = new lp::SwitchStmt($3,$4);*/
-        control --;
-      }
-
-;
-
 for:
     FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 	{
@@ -441,25 +431,48 @@ for:
   	}
 ;
 
-
-
-
-
-
-values: VALUE controlSymbol exp COLON stmtlist values
-  		{
-
-  			$$ = new lp::SwitchStmt($3,$5,$6);
-  			control--;
-
-  		}
-  		|DEFAULT controlSymbol COLON stmtlist
-  		{
-  		  $$ = new lp::SwitchStmt($4);
-  			control--;
-
-  		}
+/* AÑADIDO POR NOSOTROS */
+casos:
+	CASOS controlSymbol LPAREN exp RPAREN values END_CASOS
+	{
+		$$ = new lp::CasesStmt($4,$6);
+		control--;
+	}
+	| CASOS controlSymbol LPAREN exp RPAREN values default END_CASOS
+	{
+		$$ = new lp::CasesStmt($4, $6, $7);
+		control--;
+	}
 ;
+
+
+values: VALUE NUMBER COLON stmtlist
+	{
+		// Create a new CaseNode with a NumberNode as expression
+		lp::ExpNode* expression = new lp::NumberNode($2);
+		$$ = new lp::CaseNode(expression, $4);
+	}
+	| VALUE CONSTANT COLON stmtlist
+	{
+		// Create a new CaseNode with a ConstantNode as expression
+		lp::ExpNode* expression = new lp::ConstantNode($2);
+		$$ = new lp::CaseNode(expression, $4);
+	}
+	| VALUE CADENA COLON stmtlist
+	{
+		// Create a new CaseNode with a TextNode as expression
+		lp::ExpNode* expression = new lp::TextNode($2);
+		$$ = new lp::CaseNode(expression, $4);
+	}
+;
+
+default: DEFAULT COLON stmtlist
+	{
+		$$ = new lp::DefaultCaseNode($3);
+	}
+;
+
+
 
 asgn:   VARIABLE ASSIGNMENT exp 
 		{ 

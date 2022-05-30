@@ -198,7 +198,7 @@ SENTENCIAS DE CONTROL:							[ ]
 -------------------------------------------------------------------------------------
 COMANDOS ESPECIALES:								[ ] Asignados arriba
 --------------------------------------------------------------------------------------
-	borrar_pantalla							[ ]
+	borrar_pantalla							[X]
 	lugar(expresión numérica 1, expresión numérica 2)	[ ]
 
 
@@ -230,7 +230,7 @@ SEMÁNTICOS								[ ] Fran
 DE EJECUCIÓN							[ ]
 	SENTENCIA "PARA" CON BUCLE INFINITO			[X] 
 	FICHERO INEXISTENTE					[ ] Jose
-	FICHERO CON EXTENSIÓN INCORRECTA			[ ] Fran
+	FICHERO CON EXTENSIÓN INCORRECTA			[X]
 	OTROS							[ ] Fran
 
 										CONTROL		FECHA
