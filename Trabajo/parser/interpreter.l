@@ -163,7 +163,7 @@ ONE_LINE_COMMENT	#([^(\n)])*
             			yylval.cadena = aux2;
 						return CADENA;
 					}
-					
+
 "-"		{ return MINUS;  } 			/* NEW in example 3 */
 "+"		{ return PLUS;   } 			/* NEW in example 3 */
 
@@ -183,7 +183,7 @@ ONE_LINE_COMMENT	#([^(\n)])*
 ":=" 	{ return ASSIGNMENT; }		/* NEW in example 7 */
 
 
-"=="	{ return EQUAL; }			/* NEW in example 15 */
+"="	{ return EQUAL; }			/* NEW in example 15 */
 
 "<>"	{ return NOT_EQUAL; }		/* NEW in example 15 */
 

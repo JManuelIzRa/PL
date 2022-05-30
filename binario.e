@@ -1,6 +1,6 @@
 #  Programa que convierte un número entero a código binario.
 
-escribir_cadena('Programa que convierte un número entero a código binario \n').
+escribir_cadena('Programa que convierte un número entero a código binario \n');
 escribir_cadena('Introduce un número entero: \n');
 leer(n);
 

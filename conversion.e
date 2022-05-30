@@ -22,3 +22,4 @@ escribir_cadena(dato);
 
 lugar(20,10);
 escribir_cadena(' Fin del ejemplo de cambio del tipo de valor \n');
+
