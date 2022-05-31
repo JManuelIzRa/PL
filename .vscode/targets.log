@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 30 10:30:26 2022
+# Make data base, printed on Tue May 31 00:35:37 2022
 
 # Variables
 
@@ -41,7 +43,7 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/izra/Documents/PL/Practica2
+CURDIR := /home/fran/Desktop/University/3Curso/2Cuatrimestre/Procesadores de Lenguaje/Practicas/Practica2(Bison)/Trabajo/PL
 # makefile
 SHELL = /bin/sh
 # environment
@@ -49,7 +51,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:61119
+JOURNAL_STREAM = 8:51394
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -63,7 +65,11 @@ MAKEFILE_LIST :=
 # environment
 GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-USERNAME = izra
+USERNAME = fran
+# environment
+MAKELEVEL := 0
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
@@ -73,33 +79,33 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1528
+MANAGERPID = 1515
 # environment
-P9K_SSH = 0
+LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ec72b1c6-cf8a-4780-8a41-ec2157bd9aaa.sock
+LC_NAME = es_ES.UTF-8
 # environment
-VSCODE_CWD = /home/izra
+VSCODE_CWD = /home/fran
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PATH = /home/fran/anaconda3/bin:/home/fran/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-SESSION_MANAGER = local/ubuntu:@/tmp/.ICE-unix/1741,unix/ubuntu:/tmp/.ICE-unix/1741
+SESSION_MANAGER = local/fran-laptop1:@/tmp/.ICE-unix/1738,unix/fran-laptop1:/tmp/.ICE-unix/1738
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-GDK_PIXBUF_MODULE_FILE = /home/izra/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+GDK_PIXBUF_MODULE_FILE = /home/fran/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
 SNAP = /snap/code/97
 # environment
 SNAP_VERSION = c3511e6c
+# environment
+CONDA_PREFIX = /home/fran/anaconda3
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -109,13 +115,11 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 3b43e84f118d4d7dabe7b2111770e6fa
+INVOCATION_ID = e024ade303ad4ca9b1e8c5b25e781a25
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 LS_COLORS = 
 # environment
@@ -123,21 +127,25 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2726
+GIO_LAUNCHED_DESKTOP_FILE_PID = 34891
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
+CONDA_EXE = /home/fran/anaconda3/bin/conda
+# environment
 VSCODE_PIPE_LOGGING = true
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/izra/Documents/PL/Practica2
+PWD = /home/fran/Desktop/University/3Curso/2Cuatrimestre/Procesadores de Lenguaje/Practicas/Practica2(Bison)/Trabajo/PL
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1703
+SSH_AGENT_PID = 1700
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -145,23 +153,29 @@ GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/izra
+HOME = /home/fran
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/izra/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /home/fran/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
-LOGNAME = izra
+LOGNAME = fran
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
-SNAP_CONTEXT = MAzQSWEB_NKOjGz-CLmXDBr93KO66C2OoGxiuO_ai4idLtyBdCZU
+SNAP_CONTEXT = abpeqAhAvnvEUbTDKooiJD3eIK9HXKnOvwIMdz6iWKi_eVjSUWik
 # environment
-ZSH = /home/izra/.oh-my-zsh
+CONDA_PROMPT_MODIFIER = (base) 
+# automatic
++F = $(notdir $+)
 # environment
-SNAP_USER_COMMON = /home/izra/snap/code/common
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+SNAP_USER_COMMON = /home/fran/snap/code/common
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -169,9 +183,11 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-MAKELEVEL := 0
+LC_TIME = es_ES.UTF-8
 # environment
-SNAP_REAL_HOME = /home/izra
+SNAP_REAL_HOME = /home/fran
+# environment
+CONDA_DEFAULT_ENV = base
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -179,35 +195,39 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SNAP_USER_DATA = /home/izra/snap/code/97
+SNAP_USER_DATA = /home/fran/snap/code/97
 # environment
 SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-04ab024c-1822-4df8-8c8a-2996d46a8519.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
-USER = izra
+USER = fran
 # environment
 SNAP_REVISION = 97
+# environment
+LC_MONETARY = es_ES.UTF-8
 # makefile
 .DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = Unity
-# environment
-LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = es_ES.UTF-8
+# environment
+CONDA_SHLVL = 1
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/izra
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-0de97a3b-1.67.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-0ee9dc77-1.67.2-main.sock
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
@@ -220,22 +240,30 @@ MFLAGS = -pqrR
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
-# automatic
-+F = $(notdir $+)
+# environment
+LC_PAPER = es_ES.UTF-8
+# environment
+LC_IDENTIFICATION = es_ES.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
-SNAP_COOKIE = MAzQSWEB_NKOjGz-CLmXDBr93KO66C2OoGxiuO_ai4idLtyBdCZU
+SNAP_COOKIE = abpeqAhAvnvEUbTDKooiJD3eIK9HXKnOvwIMdz6iWKi_eVjSUWik
+# environment
+LC_NUMERIC = es_ES.UTF-8
 # automatic
 <F = $(notdir $<)
 # environment
+LC_MEASUREMENT = es_ES.UTF-8
+# environment
 SNAP_NAME = code
 # environment
-PAGER = less
-# environment
 LC_ALL = C
+# environment
+CONDA_PYTHON_EXE = /home/fran/anaconda3/bin/python
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
@@ -245,21 +273,28 @@ SUFFIXES :=
 # environment
 SNAP_REEXEC = 
 # environment
+_CE_M = 
+# environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
 WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
+ 
 GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
+LC_ADDRESS = es_ES.UTF-8
+# environment
 LANG = C
 # environment
-VSCODE_PID = 2774
+VSCODE_PID = 34938
+# environment
+_CE_CONDA = 
 # variable set hash-table stats:
-# Load=124/1024=12%, Rehash=0, Collisions=18/146=12%
+# Load=140/1024=14%, Rehash=0, Collisions=24/162=15%
 
 # Pattern-specific Variable Values
 
@@ -267,9 +302,9 @@ VSCODE_PID = 2774
 
 # Directories
 
-# . (device 2053, inode 1705258): 13 files, no impossibilities.
+# . (device 2053, inode 540404): 9 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -279,9 +314,6 @@ VSCODE_PID = 2774
 
 # Not a target:
 all:
- 
-make: *** No rule to make target 'all'.  Stop.
-
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -322,12 +354,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 262 B / avg = 12 B
-# current buf: size = 8162 B / used = 262 B / count = 21 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 205 B / avg = 12 B
+# current buf: size = 8162 B / used = 205 B / count = 17 / avg = 12 B
 
-# strcache performance: lookups = 24 / hit rate = 12%
+# strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Mon May 30 10:30:26 2022
+# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
+# Finished Make data base on Tue May 31 00:35:37 2022
 
  

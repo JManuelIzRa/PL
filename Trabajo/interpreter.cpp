@@ -5,7 +5,7 @@
 
 /*!
  \mainpage Flex and Bison: Practica Final
- \author   
+ \author   José Manuel Izquierdo Ramírez y Francisco Llamas Nuflo
  \date     2020 - 5 - 30
  \version  1.0
 */
@@ -159,8 +159,8 @@ else
  if (interactiveMode == false)
  {
   /* NEW in example 15 */
-       root->print();  
-       root->evaluate(); 
+       /*root->print();  */
+       root->evaluate();
  }
 
  /* End of program */

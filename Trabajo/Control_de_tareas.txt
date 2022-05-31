@@ -77,7 +77,7 @@ IDENTIFICADORES:								[X]
 
 
 										CONTROL		FECHA
--------------------------------------------------------------------------------------NÚMERO:									[ ]	
+-------------------------------------------------------------------------------------NÚMERO:									[X]	
 -------------------------------------------------------------------------------------
 	ENTEROS 						[X] 
 	REALES DE PUNTO FIJO					[X] 
@@ -224,14 +224,14 @@ SINTÁCTICOS								[ ]
 	SENTENCIA CON ARGUMENTOS INCOMPATIBLES 		[X]
 	OTROS						    	[ ]
 
-SEMÁNTICOS								[ ] Fran
-	ARGUMENTOS U OPERANDOS INCOMPATIBLES  		[ ]
+SEMÁNTICOS								[ ]
+	ARGUMENTOS U OPERANDOS INCOMPATIBLES  		[X]
 
 DE EJECUCIÓN							[ ]
 	SENTENCIA "PARA" CON BUCLE INFINITO			[X] 
 	FICHERO INEXISTENTE					[X] 
 	FICHERO CON EXTENSIÓN INCORRECTA			[X]
-	OTROS							[ ] Fran
+	OTROS							[X]
 
 										CONTROL		FECHA
 -------------------------------------------------------------------------------------
