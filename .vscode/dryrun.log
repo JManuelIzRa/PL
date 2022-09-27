@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/fran/Desktop/University/3Curso/2Cuatrimestre/Procesadores de Lenguaje/Practicas/Practica2(Bison)/Trabajo/PL'
-make: Leaving directory '/home/fran/Desktop/University/3Curso/2Cuatrimestre/Procesadores de Lenguaje/Practicas/Practica2(Bison)/Trabajo/PL'
+make: Entering directory '/home/izra/Documents/PL/Practica2'
+make: Leaving directory '/home/izra/Documents/PL/Practica2'
  
 make: *** No targets specified and no makefile found.  Stop.
 
